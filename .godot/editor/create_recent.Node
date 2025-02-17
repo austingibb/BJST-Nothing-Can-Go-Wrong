@@ -1,13 +1,14 @@
+StaticBody2D
+RigidBody2D
 CollisionShape2D
+Sprite2D
 CharacterBody2D
 Camera2D
-Sprite2D
 AudioStreamPlayer
 Node
 Node2D
 Timer
 CollisionPolygon2D
 Area2D
-StaticBody2D
 Polygon2D
 CanvasModulate

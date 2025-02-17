@@ -5,3 +5,7 @@ res://scripts/spawner.gd
 res://scenes/nail.tscn
 res://scenes/apartment.tscn
 res://scenes/factory_mini_game.tscn
+res://scenes/player.tscn
+res://components/controller/controller_component.gd
+res://scenes/interactable.tscn
+res://scenes/interactable.gd

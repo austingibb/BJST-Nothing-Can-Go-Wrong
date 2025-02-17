@@ -1,21 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://dm2rkj7a7abmx"]
 
 [ext_resource type="PackedScene" uid="uid://dc7sdqrrow1s2" path="res://components/controller/controller_component.tscn" id="1_aha6j"]
-[ext_resource type="Texture2D" uid="uid://kc0apssvas0j" path="res://assets/player_placeholder.png" id="1_ov7jv"]
+[ext_resource type="Texture2D" uid="uid://jl2ss6mxwvjq" path="res://assets/portraits/mc.png" id="1_vae0c"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r34ru"]
-radius = 18.0
-height = 118.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xv16"]
+radius = 98.0
+height = 304.0
 
 [node name="Player" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -109)
-texture = ExtResource("1_ov7jv")
+scale = Vector2(0.61509, 0.632948)
+texture = ExtResource("1_vae0c")
 
 [node name="ControllerComponent" parent="." instance=ExtResource("1_aha6j")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -24)
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_r34ru")
+shape = SubResource("CapsuleShape2D_5xv16")
