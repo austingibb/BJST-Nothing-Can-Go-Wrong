@@ -11,6 +11,8 @@ enum NailState {
 @export var state: NailState = NailState.Base
 @onready var sprite: Sprite2D = %Sprite
 
+signal 
+
 var bent_nail: Texture = preload("res://assets/bent_nail.png")
 var bent_nail_1: Texture = preload("res://assets/bent_nail_1.png")
 var nail: Texture = preload("res://assets/nail.png")

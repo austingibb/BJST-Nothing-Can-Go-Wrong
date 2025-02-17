@@ -8,6 +8,8 @@ size = Vector2(35, 91.2031)
 
 [node name="Nail" type="Node2D"]
 script = ExtResource("1_20vgo")
+speed = null
+state = null
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

@@ -11,3 +11,6 @@ res://scripts/factory_object.gd
 res://scenes/interaction_area.gd
 res://scripts/interaction_area.gd
 res://scenes/noise_box.gd
+res://scenes/player.tscn
+res://components/controller/controller_component.tscn
+res://components/controller/controller_component.gd
