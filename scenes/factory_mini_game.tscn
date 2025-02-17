@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddb0oqshm6ttx"]
+
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="1_qd5mu"]
+[ext_resource type="Texture2D" uid="uid://kc0apssvas0j" path="res://assets/player_placeholder.png" id="2_f64h1"]
+[ext_resource type="Script" path="res://scripts/interaction_area.gd" id="3_l3o32"]
+[ext_resource type="Script" path="res://scripts/kill_box.gd" id="4_cr044"]
+[ext_resource type="Script" path="res://scenes/noise_box.gd" id="6_5aihw"]
+[ext_resource type="AudioStream" uid="uid://csflbg3rgow13" path="res://assets/audio/hammer_wood.mp3" id="7_35yeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udkgi"]
+size = Vector2(56, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qdvx"]
+size = Vector2(189.5, 653)
+
+[node name="FactoryMiniGame" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(548, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("2_f64h1")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(-50, 540)
+script = ExtResource("1_qd5mu")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+position = Vector2(555, 525)
+script = ExtResource("3_l3o32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_udkgi")
+
+[node name="KillBox" type="Area2D" parent="."]
+position = Vector2(1260, 319)
+script = ExtResource("4_cr044")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
+shape = SubResource("RectangleShape2D_0qdvx")
+
+[node name="NoiseBox" type="Node" parent="."]
+script = ExtResource("6_5aihw")
+
+[node name="hammer_hit" type="AudioStreamPlayer" parent="NoiseBox"]
+stream = ExtResource("7_35yeu")
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="hit" from="InteractionArea" to="NoiseBox" method="_on_interaction_area_hit"]
+[connection signal="area_entered" from="KillBox" to="KillBox" method="_on_area_entered"]

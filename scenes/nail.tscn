@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cltx5clbdouw3"]
+
+[ext_resource type="Script" path="res://scripts/nail.gd" id="1_20vgo"]
+[ext_resource type="Texture2D" uid="uid://dtu6n4bwkxep6" path="res://assets/nail.png" id="2_lxoyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72idc"]
+size = Vector2(35, 91.2031)
+
+[node name="Nail" type="Node2D"]
+script = ExtResource("1_20vgo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -45)
+texture = ExtResource("2_lxoyb")
+
+[node name="HitComponent" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+position = Vector2(-5, -45)
+shape = SubResource("RectangleShape2D_72idc")
+
+[connection signal="area_entered" from="HitComponent" to="." method="_on_hit_component_area_entered"]

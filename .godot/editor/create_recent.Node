@@ -1,0 +1,10 @@
+AudioStreamPlayer
+Node
+Node2D
+Timer
+CollisionShape2D
+CollisionPolygon2D
+Area2D
+StaticBody2D
+Polygon2D
+CanvasModulate

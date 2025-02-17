@@ -6,14 +6,26 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Player2" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(706, 386)
+scale = Vector2(170.825, 170.825)
+texture = ExtResource("2_r40n3")
+
+[node name="Bod" type="Sprite2D" parent="Player2"]
+z_index = -1
+position = Vector2(-1.9606, -3.56733)
+scale = Vector2(0.0699073, 0.0295295)
+texture = ExtResource("3_1iuki")
+
 [node name="CommieBlock" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(577.5, 318)
+position = Vector2(579, 318)
 scale = Vector2(1.79531, 1.77778)
 texture = ExtResource("1_iq0qw")
 
 [node name="Player" type="Sprite2D" parent="."]
-position = Vector2(816.625, 426.625)
+position = Vector2(352, 416)
 scale = Vector2(13.07, 13.07)
 texture = ExtResource("2_r40n3")
 
