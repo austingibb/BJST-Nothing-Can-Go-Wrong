@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=6 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="Texture2D" uid="uid://cxur5r0lowxbs" path="res://assets/backgrounds/Room_placeholder.png" id="1_3g1u5"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="PackedScene" uid="uid://bqvhd1nonnjmq" path="res://scenes/interactable.tscn" id="3_sutnl"]
+[ext_resource type="PackedScene" uid="uid://wgwmrsx6fhux" path="res://scenes/items/snes_controller.tscn" id="4_ti8g7"]
+[ext_resource type="Script" path="res://scripts/austingibb/items/y_sort_daemon.gd" id="5_gffgo"]
 
 [node name="Apartment" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="floor" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(560, 340)
 texture = ExtResource("1_3g1u5")
 
@@ -18,3 +21,14 @@ position = Vector2(477, 414)
 [node name="Node2D" parent="." instance=ExtResource("3_sutnl")]
 position = Vector2(1055, 294)
 scale = Vector2(0.5, 0.484)
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Snes-controller" parent="Items" instance=ExtResource("4_ti8g7")]
+position = Vector2(836, 480)
+
+[node name="ySortFrameDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
+script = ExtResource("5_gffgo")
+player = NodePath("../Player")
+y_sort_root = NodePath("../Items")
+process_every_ms = null

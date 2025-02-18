@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://jl2ss6mxwvjq" path="res://assets/portraits/mc.png" id="1_vae0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xv16"]
-radius = 98.0
-height = 304.0
+radius = 14.0
+height = 120.0
 
 [node name="Player" type="CharacterBody2D"]
 
@@ -16,4 +16,6 @@ texture = ExtResource("1_vae0c")
 [node name="ControllerComponent" parent="." instance=ExtResource("1_aha6j")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 109)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5xv16")

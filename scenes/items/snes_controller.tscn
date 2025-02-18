@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://wgwmrsx6fhux"]
+
+[ext_resource type="Texture2D" uid="uid://homwq80ct02v" path="res://assets/SNES-controller.png" id="1_mdd1j"]
+[ext_resource type="Script" path="res://scripts/austingibb/items/item_meta_data.gd" id="2_nql7o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpkir"]
+radius = 133.13
+height = 839.89
+
+[node name="Snes-controller" type="Sprite2D"]
+position = Vector2(528, 217)
+scale = Vector2(0.129493, 0.129493)
+texture = ExtResource("1_mdd1j")
+
+[node name="Item" type="Node2D" parent="."]
+script = ExtResource("2_nql7o")
+item_aspects = 9
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.000976562, -23.1674)
+rotation = 1.8326
+scale = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_bpkir")
