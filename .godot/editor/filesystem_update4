@@ -18,3 +18,15 @@ res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble.gd
 res://addons/dialogic/Editor/Theme/MainTheme.tres
 res://addons/dialogic/Editor/Events/styles/unselected_stylebox.tres
 res://addons/dialogic/Editor/Events/styles/ResourceMenuPanelBackground.tres
+res://components/interactbale/interactable_component.tscn
+res://components/interactbale/interactable_component.gd
+res://scenes/interactable.gd
+res://components/interactable/interactable_component.tscn
+res://components/interactable/interactable_component.gd
+res://scenes/interactable.tscn
+res://scenes/Items/ball.tscn
+res://components/highlight_component/highlight_component.gd
+res://shaders/outline.gdshader
+res://components/highlight_component/highlight_component.tscn
+res://scenes/Items/ball.gd
+res://timelines/ball.dtl
