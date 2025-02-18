@@ -4,7 +4,6 @@ class_name YSortDaemon
 
 @export var player: Node	 # A CharacterBody2D-based scene
 @export var y_sort_root: Node
-@export var process_every_ms: float = 100
 
 func _process(_delta: float) -> void:
 	if not player or not y_sort_root:
