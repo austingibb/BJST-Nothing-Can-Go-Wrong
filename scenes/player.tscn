@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm2rkj7a7abmx"]
+[gd_scene load_steps=6 format=3 uid="uid://dm2rkj7a7abmx"]
 
 [ext_resource type="PackedScene" uid="uid://dc7sdqrrow1s2" path="res://components/controller/controller_component.tscn" id="1_aha6j"]
 [ext_resource type="Texture2D" uid="uid://jl2ss6mxwvjq" path="res://assets/portraits/mc.png" id="1_vae0c"]
+[ext_resource type="Script" path="res://scenes/interaction_area.gd" id="3_ueq2a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xv16"]
 radius = 98.0
 height = 304.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ckrd"]
+radius = 146.0
+height = 404.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.61509, 0.632948)
@@ -17,3 +22,11 @@ texture = ExtResource("1_vae0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5xv16")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("3_ueq2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 100)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_4ckrd")

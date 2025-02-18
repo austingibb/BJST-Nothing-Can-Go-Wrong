@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccx3p7phd2qb2"]
+
+[ext_resource type="Texture2D" uid="uid://dghjqo8br0xv4" path="res://assets/item_placeholder.png" id="1_ogmv6"]
+[ext_resource type="Script" path="res://scenes/Items/ball.gd" id="1_wabe8"]
+[ext_resource type="PackedScene" uid="uid://cyor726jo7tfe" path="res://components/interactable/interactable_component.tscn" id="2_sdtvd"]
+[ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_tkvon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4775w"]
+radius = 118.476
+
+[node name="Ball" type="Node2D"]
+position = Vector2(695.807, 453.77)
+scale = Vector2(0.5, 0.484)
+script = ExtResource("1_wabe8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ogmv6")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("2_sdtvd")]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
+shape = SubResource("CircleShape2D_4775w")
+
+[node name="HighlightComponent" parent="." instance=ExtResource("3_tkvon")]
+scale = Vector2(1, 1)
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
