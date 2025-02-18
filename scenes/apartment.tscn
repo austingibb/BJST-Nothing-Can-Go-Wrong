@@ -9,7 +9,7 @@
 [node name="Apartment" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(559, 340)
+position = Vector2(559, 339)
 texture = ExtResource("1_3g1u5")
 
 [node name="Player" parent="." instance=ExtResource("1_84olp")]
@@ -29,3 +29,4 @@ scale = Vector2(0.0699073, 0.0295295)
 texture = ExtResource("4_8yvrh")
 
 [node name="Ball" parent="." instance=ExtResource("4_1ohl8")]
+position = Vector2(814, 401)

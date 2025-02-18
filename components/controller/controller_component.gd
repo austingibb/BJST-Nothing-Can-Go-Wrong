@@ -1,5 +1,5 @@
-extends Node
 class_name ControllerComponent
+extends Node
 
 @export var state_machine: Node
 # Called when the node enters the scene tree for the first time.
