@@ -21,17 +21,6 @@ position = Vector2(477, 414)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Player" type="Sprite2D" parent="Player"]
-position = Vector2(946, -214)
-scale = Vector2(13.07, 13.07)
-texture = ExtResource("3_2kkjn")
-
-[node name="Bod" type="Sprite2D" parent="Player/Player"]
-z_index = -1
-position = Vector2(-1.9606, -3.56733)
-scale = Vector2(0.0699073, 0.0295295)
-texture = ExtResource("4_8yvrh")
-
 [node name="Ball" parent="." instance=ExtResource("4_1ohl8")]
 position = Vector2(814, 401)
 
@@ -68,3 +57,14 @@ scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall4"]
 shape = SubResource("RectangleShape2D_5g85i")
+
+[node name="Motivation" type="Sprite2D" parent="."]
+position = Vector2(1425, 200)
+scale = Vector2(13.07, 13.07)
+texture = ExtResource("3_2kkjn")
+
+[node name="Bod" type="Sprite2D" parent="Motivation"]
+z_index = -1
+position = Vector2(-1.9606, -3.56733)
+scale = Vector2(0.0699073, 0.0295295)
+texture = ExtResource("4_8yvrh")
