@@ -1,6 +1,7 @@
 # How to run our game using the Godot Editor
 
 Pssst you'll need to install git on your computer. Google it :)
+Here is a reasonable place to start: [git-scm.com link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 -----
 
