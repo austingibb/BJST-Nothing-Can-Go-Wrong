@@ -1,2 +1,5 @@
 assets/
+.godot/
+addons/
+**/.DS_Store
 
