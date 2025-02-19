@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
 		toggle_menu()
+	if event.is_action_pressed("change_level"):
+		_open_next_level()
 
 func toggle_menu() -> void:
 	if menu_instance:
@@ -30,3 +32,5 @@ func toggle_menu() -> void:
 		menu_instance = menu_scene.instantiate()
 		get_tree().current_scene.add_child(menu_instance)
 		
+func _open_next_level() -> void:
+	LevelManager.change_scene("res://scenes/factory_mini_game.tscn")
