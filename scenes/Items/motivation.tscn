@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rlg3fvmpq5ip"]
+
+[ext_resource type="Texture2D" uid="uid://bysb35tkxx6o3" path="res://assets-non-ignored/look_forward.png" id="1_7mbyg"]
+[ext_resource type="Texture2D" uid="uid://6pknhrlvo0x0" path="res://assets-non-ignored/big_chungus_png_hq_by_yellogre_dcwmqtq-pre.png" id="2_qpill"]
+
+[node name="Motivation" type="Sprite2D"]
+position = Vector2(1425, 200)
+scale = Vector2(13.07, 13.07)
+texture = ExtResource("1_7mbyg")
+
+[node name="Bod" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-1.9606, -3.56733)
+scale = Vector2(0.0699073, 0.0295295)
+texture = ExtResource("2_qpill")
