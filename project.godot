@@ -30,6 +30,10 @@ directories/dtl_directory={
 "ball": "res://timelines/ball.dtl"
 }
 
+[display]
+
+mouse_cursor/custom_image="res://assets/cursor/pointer_b.png"
+
 [dotnet]
 
 project/assembly_name="Brackey-s Jam Super Team - Nothing Can Go Wrong"
