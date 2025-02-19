@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=7 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="Texture2D" uid="uid://cxur5r0lowxbs" path="res://assets/backgrounds/Room_placeholder.png" id="1_3g1u5"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
-[ext_resource type="PackedScene" uid="uid://bqvhd1nonnjmq" path="res://scenes/interactable.tscn" id="3_sutnl"]
-[ext_resource type="PackedScene" uid="uid://csn6ty20tyj4g" path="res://scenes/audio_stream_player.tscn" id="4_buevx"]
-[ext_resource type="PackedScene" uid="uid://blipoy0eqypdr" path="res://scenes/main_menu.tscn" id="4_pfnx0"]
+[ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
+[ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
+[ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g85i"]
+size = Vector2(1647.5, 46)
 
 [node name="Apartment" type="Node2D"]
+position = Vector2(2, 0)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(560, 340)
+z_index = -1
+position = Vector2(559, 339)
 texture = ExtResource("1_3g1u5")
 
 [node name="Player" parent="." instance=ExtResource("1_84olp")]
@@ -25,3 +30,45 @@ visible = false
 [node name="Interactable" parent="." instance=ExtResource("3_sutnl")]
 position = Vector2(1055, 294)
 scale = Vector2(0.5, 0.484)
+[node name="InteractableItems" type="Node" parent="."]
+
+[node name="Ball" parent="InteractableItems" instance=ExtResource("4_1ohl8")]
+position = Vector2(816, 401)
+
+[node name="WallCollisions" type="Node2D" parent="."]
+
+[node name="Wall3" type="StaticBody2D" parent="WallCollisions"]
+position = Vector2(51, 82)
+rotation = 2.56258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall3"]
+shape = SubResource("RectangleShape2D_5g85i")
+
+[node name="Wall2" type="StaticBody2D" parent="WallCollisions"]
+position = Vector2(1094, 755)
+rotation = 2.56042
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall2"]
+shape = SubResource("RectangleShape2D_5g85i")
+
+[node name="Wall" type="StaticBody2D" parent="WallCollisions"]
+position = Vector2(27, 767)
+rotation = -2.56363
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall"]
+shape = SubResource("RectangleShape2D_5g85i")
+
+[node name="Wall4" type="StaticBody2D" parent="WallCollisions"]
+position = Vector2(1047, 79.0001)
+rotation = 3.71613
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall4"]
+shape = SubResource("RectangleShape2D_5g85i")
+
+[node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]
+z_index = -1
+
+[node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
+script = ExtResource("5_mmfak")
+player = NodePath("../Player")
+y_sort_root = NodePath("../InteractableItems")

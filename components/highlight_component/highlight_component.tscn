@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvldi6rp65ybw"]
+
+[ext_resource type="Script" path="res://components/highlight_component/highlight_component.gd" id="1_a8hxg"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_bpyex"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajl4t"]
+shader = ExtResource("2_bpyex")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 10.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="HighlightComponent" type="Node2D"]
+script = ExtResource("1_a8hxg")
+shader_material = SubResource("ShaderMaterial_ajl4t")

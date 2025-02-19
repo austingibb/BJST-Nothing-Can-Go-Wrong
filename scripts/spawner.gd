@@ -29,7 +29,7 @@ func _ready() -> void:
 # Note: This dosent handle movement, that should 
 # be in the child node
 func _on_timer_timeout() -> void:
-	const nail = preload("res://scenes/nail.tscn")
+	const nail = preload("res://scenes/factory_mini_game/nail.tscn")
   
 	if sequence.is_empty():
 		timer.stop()
