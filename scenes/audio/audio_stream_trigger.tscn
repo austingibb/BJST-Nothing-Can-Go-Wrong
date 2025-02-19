@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmwqfxho8u07v"]
+
+[ext_resource type="Script" path="res://scripts/audio/trigger_audio_stream_player.gd" id="1_0ujdn"]
+[ext_resource type="AudioStream" uid="uid://dyjbdmpp6xn0r" path="res://assets/audio/never_give_up.wav" id="1_86gil"]
+
+[node name="AudioStreamPlayer" type="Node"]
+script = ExtResource("1_0ujdn")
+
+[node name="StreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_86gil")

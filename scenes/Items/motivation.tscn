@@ -1,15 +1,142 @@
-[gd_scene load_steps=3 format=3 uid="uid://rlg3fvmpq5ip"]
+[gd_scene load_steps=14 format=3 uid="uid://rlg3fvmpq5ip"]
 
-[ext_resource type="Texture2D" uid="uid://bysb35tkxx6o3" path="res://assets-non-ignored/look_forward.png" id="1_7mbyg"]
+[ext_resource type="Texture2D" uid="uid://o3btceur4tnd" path="res://assets/portraits/big_bot_chungus/mload_player_front_head_look_down.png" id="1_je1jj"]
+[ext_resource type="Script" path="res://scenes/Items/motivation.gd" id="2_ct0ij"]
 [ext_resource type="Texture2D" uid="uid://6pknhrlvo0x0" path="res://assets-non-ignored/big_chungus_png_hq_by_yellogre_dcwmqtq-pre.png" id="2_qpill"]
+[ext_resource type="Script" path="res://components/interactable/interactable_component.gd" id="3_7d1hq"]
+[ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="4_hmr31"]
+[ext_resource type="PackedScene" uid="uid://cmwqfxho8u07v" path="res://scenes/audio/audio_stream_trigger.tscn" id="6_k8kgo"]
 
-[node name="Motivation" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsfy0"]
+atlas = ExtResource("1_je1jj")
+region = Rect2(0, 25, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it734"]
+atlas = ExtResource("1_je1jj")
+region = Rect2(0, 25, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5qt6"]
+atlas = ExtResource("1_je1jj")
+region = Rect2(25, 25, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkas3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsfy0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it734")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5qt6")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_2mhab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer/StreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kqsnv"]
+resource_name = "never_give_up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer/StreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oih7w"]
+_data = {
+"RESET": SubResource("Animation_2mhab"),
+"never_give_up": SubResource("Animation_kqsnv")
+}
+
+[node name="Motivation" type="AnimatedSprite2D"]
 position = Vector2(1425, 200)
 scale = Vector2(13.07, 13.07)
-texture = ExtResource("1_7mbyg")
+sprite_frames = SubResource("SpriteFrames_tkas3")
+animation = &"talking"
+script = ExtResource("2_ct0ij")
 
 [node name="Bod" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-1.9606, -3.56733)
+position = Vector2(-2.19452, -5.01938)
 scale = Vector2(0.0699073, 0.0295295)
 texture = ExtResource("2_qpill")
+
+[node name="InteractableComponent" type="Area2D" parent="."]
+position = Vector2(-0.233923, -1.45205)
+script = ExtResource("3_7d1hq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractableComponent"]
+visible = false
+polygon = PackedVector2Array(1.83627, -11.7062, 2.60138, -7.72762, 5.66182, -4.05509, 9.10482, 1.98929, 7.42158, 5.66182, 2.7544, 6.73298, -4.74368, 7.42158, -12.3183, 6.04438, -13.772, 2.29533, -9.25784, -1.53022, -5.04973, -3.97858, -4.97322, -8.49273, -6.42693, -15.6083, -3.51951, -9.56389, -0.612083, -9.48738, 1.07116, -15.0727)
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_hmr31")]
+sprite = NodePath("../Bod")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("6_k8kgo")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oih7w")
+}
+autoplay = "never_give_up"
+speed_scale = 0.5
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+[connection signal="mouse_entered" from="InteractableComponent" to="InteractableComponent" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InteractableComponent" to="InteractableComponent" method="_on_mouse_exited"]
+
+[editable path="AudioStreamPlayer"]
