@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfxfhllx66pw7"]
+
+[ext_resource type="Script" path="res://components/persistent.gd" id="1_essvh"]
+
+[node name="Persistent" type="Node"]
+script = ExtResource("1_essvh")
