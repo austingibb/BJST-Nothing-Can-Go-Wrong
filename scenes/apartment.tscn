@@ -64,5 +64,3 @@ z_index = -1
 script = ExtResource("5_mmfak")
 player = NodePath("../Player")
 y_sort_root = NodePath("../InteractableItems")
-
-

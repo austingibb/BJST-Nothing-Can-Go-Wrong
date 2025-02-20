@@ -3,6 +3,7 @@ extends Node
 
 @export var state_machine: Node
 @export var speed: float
+@export var packed_scene: PackedScene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,4 +24,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # this is the relevant code for handling opening the next level proof of concept
 func _open_next_level() -> void:
-	LevelManager.change_scene("res://scenes/factory_mini_game.tscn")
+	LevelManager.change_scene(packed_scene.get_path())
