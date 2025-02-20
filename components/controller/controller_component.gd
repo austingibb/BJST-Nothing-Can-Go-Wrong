@@ -3,12 +3,12 @@ extends Node
 
 @export var state_machine: Node
 @export var speed: float
+@export var packed_scene: PackedScene
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Handle player movement
 	var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
-	if input_direction.x >= 0:
-		get_parent().get_node("Sprite2D").scale.x = 1 
 	if (input_direction.x >= 0):
 		get_parent().get_node("Sprite2D").flip_h = true 
 	else:
@@ -16,19 +16,11 @@ func _process(delta: float) -> void:
 	owner.velocity = input_direction.normalized() * speed
 	owner.move_and_slide()
 
+# this is the relevant code for handling opening the next level proof of concept
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
-		toggle_menu()
 	if event.is_action_pressed("change_level"):
 		_open_next_level()
 
-func toggle_menu() -> void:
-	if menu_instance:
-		menu_instance.queue_free()
-		menu_instance = null
-	else:
-		menu_instance = menu_scene.instantiate()
-		get_tree().current_scene.add_child(menu_instance)
-		
+# this is the relevant code for handling opening the next level proof of concept
 func _open_next_level() -> void:
-	LevelManager.change_scene("res://scenes/factory_mini_game.tscn")
+	LevelManager.change_scene(packed_scene.get_path())

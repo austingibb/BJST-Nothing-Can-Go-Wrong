@@ -4,3 +4,4 @@
 
 [node name="ControllerComponent" type="Node"]
 script = ExtResource("1_2kimw")
+speed = null
