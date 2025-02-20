@@ -18,14 +18,14 @@ func _process(delta: float) -> void:
 
 # this is the relevant code for handling opening the next level proof of concept
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
-		toggle_menu()
-	if event.is_action_pressed("change_level"):
-		open_next_level()
-		
+  if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
+    toggle_menu()
+  if event.is_action_pressed("change_level"):
+    open_next_level()
+    
 func toggle_menu() -> void:
-	LevelManager.toggle_menu()
+  LevelManager.toggle_menu()
 
 # this is the relevant code for handling opening the next level proof of concept
 func open_next_level() -> void:
-	LevelManager.change_scene(packed_scene.get_path())
+  LevelManager.change_scene(packed_scene.get_path())
