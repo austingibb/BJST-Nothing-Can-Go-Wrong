@@ -16,7 +16,7 @@ size = Vector2(189.5, 653)
 [node name="FactoryMiniGame" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(548, 325)
+position = Vector2(577, 325)
 scale = Vector2(2, 2)
 texture = ExtResource("1_rmilo")
 
@@ -28,7 +28,7 @@ script = ExtResource("2_qm22t")
 wait_time = 0.25
 
 [node name="InteractionArea" type="Area2D" parent="."]
-position = Vector2(555, 525)
+position = Vector2(581, 511)
 script = ExtResource("3_hapqc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
@@ -46,6 +46,9 @@ script = ExtResource("5_gkbdi")
 
 [node name="hammer_hit" type="AudioStreamPlayer" parent="NoiseBox"]
 stream = ExtResource("6_ebclp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 325)
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="hit" from="InteractionArea" to="NoiseBox" method="_on_interaction_area_hit"]
