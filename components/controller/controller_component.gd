@@ -5,9 +5,6 @@ class_name ControllerComponent
 var menu_scene: PackedScene = preload("res://scenes/main_menu.tscn")  # Adjust path if needed
 var menu_instance: CanvasLayer = null  # Store reference to the menu
 
-func _ready() -> void:
-	print(owner)
-
 func _process(delta: float) -> void:
 	# Handle player movement
 	var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
@@ -18,19 +15,11 @@ func _process(delta: float) -> void:
 	owner.velocity = input_direction.normalized() * 400
 	owner.move_and_slide()
 
+# this is the relevant code for handling opening the next level proof of concept
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
-		toggle_menu()
 	if event.is_action_pressed("change_level"):
 		_open_next_level()
 
-func toggle_menu() -> void:
-	if menu_instance:
-		menu_instance.queue_free()
-		menu_instance = null
-	else:
-		menu_instance = menu_scene.instantiate()
-		get_tree().current_scene.add_child(menu_instance)
-		
+# this is the relevant code for handling opening the next level proof of concept
 func _open_next_level() -> void:
 	LevelManager.change_scene("res://scenes/factory_mini_game.tscn")
