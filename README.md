@@ -1,3 +1,5 @@
+Gaem can be played [on itch.io](https://austingibb.itch.io/no-cause-for-concern-brackeys-2025).
+
 # How to run our game using the Godot Editor
 ## Intro
 Pssst you'll need to install git on your computer.
