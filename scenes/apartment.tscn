@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=11 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ch5dtewaq6nkl" path="res://assets/backgrounds/backwall_room.png" id="3_evmdf"]
 [ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_j0ya2"]
-[ext_resource type="PackedScene" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
-[ext_resource type="Script" uid="uid://c6rqbsvs8fiov" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
+[ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
+[ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
+[ext_resource type="Script" path="res://components/persistent.gd" id="7_dn623"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g85i"]
 size = Vector2(1647.5, 46)
@@ -47,6 +48,9 @@ position = Vector2(477, 414)
 
 [node name="Ball" parent="InteractableItems" instance=ExtResource("4_1ohl8")]
 position = Vector2(816, 401)
+script = ExtResource("7_dn623")
+unique_id = "Ball"
+is_interacted = false
 
 [node name="WallCollisions" type="Node2D" parent="."]
 
@@ -80,6 +84,8 @@ shape = SubResource("RectangleShape2D_5g85i")
 
 [node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]
 z_index = -1
+script = ExtResource("7_dn623")
+unique_id = "CHUNGUS"
 
 [node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
 script = ExtResource("5_mmfak")
