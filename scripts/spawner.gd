@@ -1,24 +1,24 @@
 extends Node2D
 
 enum FactoryObject {
-  Nail,
-  Space
+	Nail,
+	Space
 }
 
 @onready var timer:Timer = $Timer
 
 # demo sequence
 var sequence: Array[FactoryObject] = [
-  FactoryObject.Nail,
-  FactoryObject.Nail,
-  FactoryObject.Space,
-  FactoryObject.Nail,
-  FactoryObject.Space,
-  FactoryObject.Nail,
-  FactoryObject.Space,
-  FactoryObject.Nail,
-  FactoryObject.Space,
-  FactoryObject.Nail,
+	FactoryObject.Nail,
+	FactoryObject.Nail,
+	FactoryObject.Space,
+	FactoryObject.Nail,
+	FactoryObject.Space,
+	FactoryObject.Nail,
+	FactoryObject.Space,
+	FactoryObject.Nail,
+	FactoryObject.Space,
+	FactoryObject.Nail,
 ]
 
 func _ready() -> void:
@@ -30,7 +30,7 @@ func _ready() -> void:
 # be in the child node
 func _on_timer_timeout() -> void:
 	const nail = preload("res://scenes/factory_mini_game/nail.tscn")
-  
+
 	if sequence.is_empty():
 		timer.stop()
 	else:

@@ -542,6 +542,7 @@ animation = &"idle"
 animated_sprite2d = NodePath("../AnimatedSprite2D")
 
 [node name="ControllerComponent" parent="." node_paths=PackedStringArray("animation_handler") instance=ExtResource("1_aha6j")]
+speed = null
 packed_scene = ExtResource("13_jej6c")
 animation_handler = NodePath("../AnimationHandlerComponent")
 
