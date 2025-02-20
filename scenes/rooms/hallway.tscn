@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://b72kw8fbsbcan"]
+
+[ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
+[ext_resource type="Texture2D" uid="uid://dc3v1riqbbobn" path="res://assets/backgrounds/Hall_back.png" id="2_trhb2"]
+[ext_resource type="Texture2D" uid="uid://2r7knkcax1hy" path="res://assets/backgrounds/Hall_front.png" id="3_l4sad"]
+[ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="4_rtl2c"]
+[ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="5_2owul"]
+[ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="5_sqffp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrkd"]
+size = Vector2(1282, 42.6671)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgv4e"]
+size = Vector2(659.908, 42.6671)
+
+[node name="Hallway" type="Node2D"]
+
+[node name="WallCollisions" type="Node2D" parent="."]
+
+[node name="Wall1" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall1"]
+position = Vector2(714, 566)
+rotation = -0.577943
+shape = SubResource("RectangleShape2D_3nrkd")
+
+[node name="Wall2" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall2"]
+position = Vector2(305, 301)
+rotation = -0.577943
+shape = SubResource("RectangleShape2D_3nrkd")
+
+[node name="Wall3" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall3"]
+position = Vector2(-27.9999, 751)
+rotation = 0.54751
+shape = SubResource("RectangleShape2D_wgv4e")
+
+[node name="Wall4" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall4"]
+position = Vector2(1009, 99)
+rotation = 0.54751
+shape = SubResource("RectangleShape2D_wgv4e")
+
+[node name="BuildingBackground" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="BuildingBackground"]
+position = Vector2(507, 355)
+texture = ExtResource("1_um01q")
+
+[node name="HallBack" type="Sprite2D" parent="BuildingBackground"]
+position = Vector2(510, 360)
+texture = ExtResource("2_trhb2")
+
+[node name="HallFront" type="Sprite2D" parent="BuildingBackground"]
+position = Vector2(509, 358)
+texture = ExtResource("3_l4sad")
+
+[node name="Door" parent="." instance=ExtResource("4_rtl2c")]
+position = Vector2(592, 63)
+scale = Vector2(0.18, 0.18)
+destination = ExtResource("5_sqffp")
+
+[node name="Player" parent="." instance=ExtResource("5_2owul")]
+position = Vector2(663, 111)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
