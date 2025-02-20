@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccx3p7phd2qb2"]
 
 [ext_resource type="Texture2D" uid="uid://dghjqo8br0xv4" path="res://assets/item_placeholder.png" id="1_ogmv6"]
-[ext_resource type="Script" path="res://scenes/Items/ball.gd" id="1_wabe8"]
+[ext_resource type="Script" uid="uid://d0c61rhei5t4j" path="res://scenes/Items/ball.gd" id="1_wabe8"]
 [ext_resource type="PackedScene" uid="uid://cyor726jo7tfe" path="res://components/interactable/interactable_component.tscn" id="2_sdtvd"]
 [ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_tkvon"]
-[ext_resource type="Script" path="res://components/items/item_meta_data.gd" id="5_iw3v1"]
+[ext_resource type="Script" uid="uid://kc4xotnceu28" path="res://components/items/item_meta_data.gd" id="5_iw3v1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4775w"]
 radius = 116.0
@@ -16,12 +16,14 @@ script = ExtResource("1_wabe8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ogmv6")
 
-[node name="InteractableComponent" parent="." instance=ExtResource("2_sdtvd")]
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("highlighted_component") instance=ExtResource("2_sdtvd")]
+highlighted_component = NodePath("../HighlightComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
 shape = SubResource("CircleShape2D_4775w")
 
-[node name="HighlightComponent" parent="." instance=ExtResource("3_tkvon")]
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_tkvon")]
+sprite = NodePath("../Sprite2D")
 
 [node name="Item" type="Node" parent="."]
 script = ExtResource("5_iw3v1")

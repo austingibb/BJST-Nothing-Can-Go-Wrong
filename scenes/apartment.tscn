@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cxur5r0lowxbs" path="res://assets/backgrounds/Room_placeholder.png" id="1_3g1u5"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
-[ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
-[ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
+[ext_resource type="PackedScene" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
+[ext_resource type="Script" uid="uid://c6rqbsvs8fiov" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g85i"]
 size = Vector2(1647.5, 46)

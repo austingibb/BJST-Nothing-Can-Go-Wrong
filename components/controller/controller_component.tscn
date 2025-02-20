@@ -1,7 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dc7sdqrrow1s2"]
 
-[ext_resource type="Script" path="res://components/controller/controller_component.gd" id="1_2kimw"]
+[ext_resource type="Script" uid="uid://bhsofc07margc" path="res://components/controller/controller_component.gd" id="1_2kimw"]
 
 [node name="ControllerComponent" type="Node"]
 script = ExtResource("1_2kimw")
-speed = null
