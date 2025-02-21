@@ -5,4 +5,4 @@ class_name Persistent
 var is_interacted: bool = false
 
 func _ready() -> void :
-	add_to_group("Persistent")
+	get_parent().add_to_group("Persistent")
