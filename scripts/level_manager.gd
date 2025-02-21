@@ -42,11 +42,12 @@ var persistent_data: Dictionary = {}
 func initialize_persistent_dictionary() -> void:
 	persistent_data.clear()
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
-		var id : String = persistent.unique_id
-		persistent_data[id] = {
-			"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
-			"is_interacted": false
-		}
+		if persistent.has_node("Persistent"):
+			var id : String = persistent.get_node("Persistent").unique_id
+			persistent_data[id] = {
+				"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
+				"is_interacted": false
+			}
 	var file : FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(persistent_data, "\t"))
 	file.close()
@@ -54,11 +55,12 @@ func initialize_persistent_dictionary() -> void:
 # override the saved data of each Persistent object
 func save_game() -> void:
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
-		var id : String = persistent.unique_id
-		persistent_data[id] = {
-			"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
-			"is_interacted": persistent.is_interacted
-		}
+		if persistent.has_node("Persistent"):
+			var id : String = persistent.get_node("Persistent").unique_id
+			persistent_data[id] = {
+				"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
+				"is_interacted": persistent.get_node("Persistent").is_interacted
+			}
 	
 	var file : FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(persistent_data, "\t"))
@@ -77,9 +79,9 @@ func load_game() -> void:
 	file.close()
 		
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
-		var id : String = persistent.unique_id
-		if id in persistent_data:
-			persistent.global_position.x = persistent_data[id]["position"].x
-			persistent.global_position.y = persistent_data[id]["position"].y
-		
-			persistent.is_interacted = persistent_data[id]["is_interacted"]
+		if persistent.has_node("Persistent"):
+			var id : String = persistent.get_node("Persistent").unique_id
+			if id in persistent_data:
+				persistent.global_position.x = persistent_data[id]["position"].x
+				persistent.global_position.y = persistent_data[id]["position"].y
+				persistent.get_node("Persistent").is_interacted = bool(persistent_data[id]["is_interacted"])
