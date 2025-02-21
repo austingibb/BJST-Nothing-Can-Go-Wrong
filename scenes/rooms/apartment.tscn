@@ -83,7 +83,6 @@ position = Vector2(816, 401)
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = 2
 position = Vector2(1317, 494)
-scale = Vector2(0.18, 0.18)
 destination = ExtResource("8_1jvul")
 
 [node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]

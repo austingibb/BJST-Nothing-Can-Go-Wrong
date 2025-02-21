@@ -18,6 +18,7 @@ shader_parameter/add_margins = true
 script = ExtResource("1_pl4qv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.18, 0.18)
 texture = ExtResource("1_0xr6b")
 
 [node name="InteractableComponent" type="Area2D" parent="." node_paths=PackedStringArray("highlighted_component")]
@@ -25,7 +26,7 @@ script = ExtResource("3_aii1r")
 highlighted_component = NodePath("../HighlightComponent")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractableComponent"]
-polygon = PackedVector2Array(-411, -200, -421, 772, 406, 243, 412, -742)
+polygon = PackedVector2Array(-75, -36, 74, -133, 74, 44, -75, 139)
 
 [node name="HighlightComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_grxnr")
