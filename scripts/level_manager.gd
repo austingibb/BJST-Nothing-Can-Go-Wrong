@@ -44,7 +44,7 @@ func initialize_persistent_dictionary() -> void:
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
 		var id : String = persistent.unique_id
 		persistent_data[id] = {
-			"position": persistent.global_position,
+			"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
 			"is_interacted": false
 		}
 	var file : FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
@@ -56,7 +56,7 @@ func save_game() -> void:
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
 		var id : String = persistent.unique_id
 		persistent_data[id] = {
-			"position": persistent.global_position,
+			"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
 			"is_interacted": persistent.is_interacted
 		}
 	
@@ -79,5 +79,7 @@ func load_game() -> void:
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
 		var id : String = persistent.unique_id
 		if id in persistent_data:
-			persistent.global_position = persistent_data[id]["position"]
+			persistent.global_position.x = persistent_data[id]["position"].x
+			persistent.global_position.y = persistent_data[id]["position"].y
+		
 			persistent.is_interacted = persistent_data[id]["is_interacted"]
