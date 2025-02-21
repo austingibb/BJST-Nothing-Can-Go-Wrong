@@ -26,14 +26,14 @@ func toggle_menu() -> void:
 	else:
 		menu_instance = menu_scene.instantiate()
 		get_tree().current_scene.add_child(menu_instance)
-
+	
 func change_scene(scene_path: String) -> void:
 	if current_scene:
-		current_scene.call_deferred("queue_free")
-	var new_scene: Node2D = load(scene_path).instantiate() 
-	get_tree().current_scene = new_scene
+		current_scene.queue_free()  # Free the old scene before switching
+	await get_tree().process_frame  # Ensure the old scene is freed before loading the new one
+	var new_scene: Node2D = load(scene_path).instantiate()
 	get_tree().root.add_child(new_scene)
-	current_scene = new_scene
+	current_scene = new_scene  # Update current scene reference
 
 # Saving Logic 
 var persistent_data: Dictionary = {}
