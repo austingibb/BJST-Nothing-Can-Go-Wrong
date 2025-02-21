@@ -26,7 +26,7 @@ func toggle_menu() -> void:
 	else:
 		menu_instance = menu_scene.instantiate()
 		get_tree().current_scene.add_child(menu_instance)
-	
+
 func change_scene(scene_path: String) -> void:
 	if current_scene:
 		current_scene.queue_free()  # Free the old scene before switching

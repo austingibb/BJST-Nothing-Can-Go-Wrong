@@ -26,7 +26,9 @@ gdscript/warnings/untyped_declaration=2
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"joel": "res://characters/joel.dch"
+}
 directories/dtl_directory={
 "ball": "res://timelines/ball.dtl"
 }
