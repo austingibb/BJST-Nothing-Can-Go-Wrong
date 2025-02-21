@@ -28,4 +28,5 @@ func toggle_menu() -> void:
 
 # this is the relevant code for handling opening the next level proof of concept
 func open_next_level() -> void:
-	LevelManager.change_scene(packed_scene.get_path())
+	LevelManager.change_scene("res://scenes/apartment.tscn", 0)
+	#LevelManager.change_scene(packed_scene.get_path(), 0)

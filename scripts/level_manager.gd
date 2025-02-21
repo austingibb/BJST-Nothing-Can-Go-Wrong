@@ -27,13 +27,22 @@ func toggle_menu() -> void:
 		menu_instance = menu_scene.instantiate()
 		get_tree().current_scene.add_child(menu_instance)
 
-func change_scene(scene_path: String) -> void:
+func change_scene(scene_path: String, spawn_index : int) -> void:
 	if current_scene:
 		current_scene.call_deferred("queue_free")
-	var new_scene: Node2D = load(scene_path).instantiate() 
+	var new_scene: Node2D = load(scene_path).instantiate()
+	var spawn_start: Node = new_scene.get_node("SpawnStart")
+	var spawn_end: Node = new_scene.get_node("SpawnEnd")
+	var spawn_position: Vector2
+	if spawn_index == 0:
+		spawn_position = spawn_start.global_position
+	else:
+		spawn_position = spawn_end.global_position
 	get_tree().current_scene = new_scene
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
+	var player : CharacterBody2D = current_scene.get_node("Player")
+	player.global_position = spawn_position
 
 # Saving Logic 
 var persistent_data: Dictionary = {}
