@@ -32,8 +32,7 @@ func change_scene(scene_path: String, spawn_type: String) -> void:
 		current_scene.call_deferred("queue_free")
 	var new_scene: Node2D = load(scene_path).instantiate()
 	var spawn_point: Node = new_scene.get_node(spawn_type)
-	var spawn_position: Vector2
-	spawn_position = spawn_point.global_position
+	var spawn_position: Vector2 = spawn_point.global_position
 	get_tree().current_scene = new_scene
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
