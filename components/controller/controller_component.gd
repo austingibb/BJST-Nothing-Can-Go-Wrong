@@ -8,13 +8,14 @@ class_name ControllerComponent
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Handle player movement
-	var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
-	if animation_handler:
-		animation_handler.handle_animation(input_direction)
-	else:
-		push_warning("No Animation Handler assigned!")
-	owner.velocity = input_direction * speed
-	owner.move_and_slide()
+	if Dialogic.current_timeline == null:
+		var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
+		if animation_handler:
+			animation_handler.handle_animation(input_direction)
+		else:
+			push_warning("No Animation Handler assigned!")
+		owner.velocity = input_direction * speed
+		owner.move_and_slide()
 
 # this is the relevant code for handling opening the next level proof of concept
 func _unhandled_input(event: InputEvent) -> void:

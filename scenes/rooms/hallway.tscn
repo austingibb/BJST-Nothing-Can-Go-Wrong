@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_mydxo"]
-[ext_resource type="PackedScene" path="res://scenes/Items/door.tscn" id="4_rtl2c"]
+[ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="4_rtl2c"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="5_2owul"]
 [ext_resource type="Texture2D" uid="uid://bfpk6q7uahu2n" path="res://assets/backgrounds/Hallway_back.png" id="5_m5g25"]
 [ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="5_sqffp"]
 [ext_resource type="Texture2D" uid="uid://40fwpscka6pu" path="res://assets/backgrounds/Hallway_front.png" id="6_fq2gq"]
-[ext_resource type="PackedScene" path="res://scenes/Items/main_door.tscn" id="7_g4xmd"]
+[ext_resource type="PackedScene" uid="uid://dtwp7owuejeib" path="res://scenes/Items/main_door.tscn" id="7_g4xmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrkd"]
 size = Vector2(1282, 42.6671)

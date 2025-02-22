@@ -1,7 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://dm2rkj7a7abmx"]
+[gd_scene load_steps=81 format=3 uid="uid://dm2rkj7a7abmx"]
 
 [ext_resource type="PackedScene" uid="uid://dc7sdqrrow1s2" path="res://components/controller/controller_component.tscn" id="1_aha6j"]
-[ext_resource type="PackedScene" path="res://components/persistent.tscn" id="1_kj7uo"]
+[ext_resource type="PackedScene" uid="uid://cfxfhllx66pw7" path="res://components/persistent.tscn" id="1_kj7uo"]
 [ext_resource type="Texture2D" uid="uid://cvonsk13gdh64" path="res://assets/sprites/blue_walk_EAST-Sheet.png" id="1_tww0p"]
 [ext_resource type="Texture2D" uid="uid://qfm518u85cff" path="res://assets/sprites/blue_walk_SOUTH-Sheet.png" id="2_28end"]
 [ext_resource type="Texture2D" uid="uid://clwrxb0tgdi21" path="res://assets/sprites/blue_walk_NORTH-Sheet.png" id="3_smgj1"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://6x2ldixl3xkq" path="res://assets/sprites/blue_walk_SOUTH-WEST-Sheet.png" id="8_w4tcv"]
 [ext_resource type="Texture2D" uid="uid://d2u0m3t7dcv3p" path="res://assets/sprites/blue_8direction_standing-Sheet.png" id="10_jej6c"]
 [ext_resource type="PackedScene" uid="uid://m4aq8ioa75os" path="res://components/animation_handler_component/animation_handler_component.tscn" id="11_jej6c"]
-[ext_resource type="Script" path="res://components/animation_handler_component/animation_handler.gd" id="12_6eigd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7q3ty"]
 atlas = ExtResource("1_tww0p")
@@ -536,7 +535,6 @@ sprite_frames = SubResource("SpriteFrames_668xb")
 animation = &"idle"
 
 [node name="AnimationHandlerComponent" parent="." node_paths=PackedStringArray("animated_sprite2d") instance=ExtResource("11_jej6c")]
-script = ExtResource("12_6eigd")
 animated_sprite2d = NodePath("../AnimatedSprite2D")
 
 [node name="ControllerComponent" parent="." node_paths=PackedStringArray("animation_handler") instance=ExtResource("1_aha6j")]

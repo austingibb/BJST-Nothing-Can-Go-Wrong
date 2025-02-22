@@ -83,7 +83,7 @@ func save_game() -> void:
 	is_saved = true
 
 # load the saved data (at the start of the game -> _ready)
-func load_game(is_new : bool) -> void:
+func load_game(is_new : bool = false) -> void:
 	if not FileAccess.file_exists(save_path):
 		print("No save file found, initializing fresh data.")
 		initialize_persistent_dictionary()
