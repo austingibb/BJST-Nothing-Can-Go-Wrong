@@ -1,5 +1,5 @@
-extends Node
 class_name AnimationHandler
+extends Node
 
 @export var animated_sprite2d: AnimatedSprite2D
 
