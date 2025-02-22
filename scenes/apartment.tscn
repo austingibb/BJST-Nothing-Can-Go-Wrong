@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://tkwe1c16gjl2"]
+[gd_scene load_steps=13 format=3 uid="uid://tkwe1c16gjl2"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
 [ext_resource type="Texture2D" uid="uid://bhqed1l3o6k3e" path="res://assets/backgrounds/room_wall1.png" id="2_0mfw8"]
 [ext_resource type="Texture2D" uid="uid://ch5dtewaq6nkl" path="res://assets/backgrounds/backwall_room.png" id="3_evmdf"]
 [ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
+[ext_resource type="PackedScene" uid="uid://csn6ty20tyj4g" path="res://scenes/audio_stream_player.tscn" id="4_buevx"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_j0ya2"]
 [ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
 [ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
@@ -44,7 +45,7 @@ polygon = PackedVector2Array(5, -51, 985, -691, 989, -511, 5, 125, -983, -516, -
 position = Vector2(477, 414)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -1)
+position = Vector2(2, -1)
 
 [node name="InteractableItems" type="Node" parent="."]
 
@@ -98,3 +99,5 @@ position = Vector2(-22, 322)
 
 [node name="SpawnEnd" parent="." instance=ExtResource("10_mot5k")]
 position = Vector2(1092, 334)
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("4_buevx")]
