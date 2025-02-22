@@ -1,5 +1,5 @@
-class_name ControllerComponent
 extends Node
+class_name ControllerComponent
 
 @export var speed: float = 300
 @export var packed_scene: PackedScene

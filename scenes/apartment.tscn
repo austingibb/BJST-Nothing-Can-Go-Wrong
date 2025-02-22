@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=12 format=3 uid="uid://tkwe1c16gjl2"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_j0ya2"]
 [ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
 [ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
-[ext_resource type="PackedScene" uid="uid://cfxfhllx66pw7" path="res://components/persistent.tscn" id="8_ogxf3"]
-[ext_resource type="PackedScene" uid="uid://c231kpu6n1n6g" path="res://scenes/spawn_point.tscn" id="10_mot5k"]
+[ext_resource type="PackedScene" path="res://components/persistent.tscn" id="8_ogxf3"]
+[ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="10_mot5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g85i"]
 size = Vector2(1647.5, 46)
@@ -44,6 +44,7 @@ polygon = PackedVector2Array(5, -51, 985, -691, 989, -511, 5, 125, -983, -516, -
 position = Vector2(477, 414)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -1)
 
 [node name="InteractableItems" type="Node" parent="."]
 
