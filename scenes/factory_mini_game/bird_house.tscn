@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7kkxry0u5evr"]
+
+[ext_resource type="Texture2D" uid="uid://co72b6m4foyh6" path="res://assets/bird_house.png" id="1_3ks84"]
+[ext_resource type="Script" path="res://scenes/factory_mini_game/bird_house.gd" id="1_k7qj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5x5i"]
+size = Vector2(88, 93.125)
+
+[node name="BirdHouse" type="Node2D"]
+script = ExtResource("1_k7qj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -51)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_3ks84")
+
+[node name="HitComponent" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
+position = Vector2(1, -46.4375)
+shape = SubResource("RectangleShape2D_c5x5i")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://b72kw8fbsbcan"]
+
+[ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
+[ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_mydxo"]
+[ext_resource type="PackedScene" path="res://scenes/Items/door.tscn" id="4_rtl2c"]
+[ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="5_2owul"]
+[ext_resource type="Texture2D" uid="uid://bfpk6q7uahu2n" path="res://assets/backgrounds/Hallway_back.png" id="5_m5g25"]
+[ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="5_sqffp"]
+[ext_resource type="Texture2D" uid="uid://40fwpscka6pu" path="res://assets/backgrounds/Hallway_front.png" id="6_fq2gq"]
+[ext_resource type="PackedScene" path="res://scenes/Items/main_door.tscn" id="7_g4xmd"]
+[ext_resource type="PackedScene" uid="uid://ddb0oqshm6ttx" path="res://scenes/factory_mini_game/factory_mini_game.tscn" id="7_t5xhq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrkd"]
+size = Vector2(1282, 42.6671)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgv4e"]
+size = Vector2(574.661, 42.6671)
+
+[node name="Hallway" type="Node2D"]
+
+[node name="WallCollisions" type="Node2D" parent="."]
+
+[node name="Wall1" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall1"]
+position = Vector2(714, 566)
+rotation = -0.577943
+shape = SubResource("RectangleShape2D_3nrkd")
+
+[node name="Wall2" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall2"]
+position = Vector2(305, 301)
+rotation = -0.577943
+shape = SubResource("RectangleShape2D_3nrkd")
+
+[node name="Wall3" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall3"]
+position = Vector2(8.39321, 773.188)
+rotation = 0.54751
+shape = SubResource("RectangleShape2D_wgv4e")
+
+[node name="Wall4" type="StaticBody2D" parent="WallCollisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall4"]
+position = Vector2(1009, 99)
+rotation = 0.54751
+shape = SubResource("RectangleShape2D_wgv4e")
+
+[node name="BuildingBackground" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="BuildingBackground"]
+position = Vector2(507, 355)
+texture = ExtResource("1_um01q")
+
+[node name="HallwayBack" type="Sprite2D" parent="BuildingBackground"]
+position = Vector2(508, 357.5)
+texture = ExtResource("5_m5g25")
+
+[node name="HallwayFront" type="Sprite2D" parent="BuildingBackground"]
+z_index = 1
+position = Vector2(508, 357.5)
+texture = ExtResource("6_fq2gq")
+
+[node name="SeeThroughComponent" parent="BuildingBackground/HallwayFront" node_paths=PackedStringArray("sprite") instance=ExtResource("4_mydxo")]
+position = Vector2(-508, -357.5)
+sprite = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildingBackground/HallwayFront/SeeThroughComponent"]
+polygon = PackedVector2Array(-164, 477, 211, 699, 1174, 67, 1174, 238, 209, 866, -167, 637)
+
+[node name="Door" parent="." instance=ExtResource("4_rtl2c")]
+position = Vector2(592, 63)
+destination = ExtResource("5_sqffp")
+
+[node name="MainDoor" parent="." instance=ExtResource("7_g4xmd")]
+position = Vector2(992, 31)
+destination = ExtResource("7_t5xhq")
+
+[node name="Player" parent="." instance=ExtResource("5_2owul")]
+position = Vector2(663, 111)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]

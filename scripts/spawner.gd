@@ -1,7 +1,7 @@
 extends Node2D
 
 enum FactoryObject {
-	Nail,
+	BirdHouse,
 	Space
 }
 
@@ -9,16 +9,16 @@ enum FactoryObject {
 
 # demo sequence
 var sequence: Array[FactoryObject] = [
-	FactoryObject.Nail,
-	FactoryObject.Nail,
+	FactoryObject.BirdHouse,
+	FactoryObject.BirdHouse,
+	FactoryObject.BirdHouse,
+	FactoryObject.BirdHouse,
 	FactoryObject.Space,
-	FactoryObject.Nail,
+	FactoryObject.BirdHouse,
 	FactoryObject.Space,
-	FactoryObject.Nail,
+	FactoryObject.BirdHouse,
 	FactoryObject.Space,
-	FactoryObject.Nail,
-	FactoryObject.Space,
-	FactoryObject.Nail,
+	FactoryObject.BirdHouse,
 ]
 
 func _ready() -> void:
@@ -29,15 +29,14 @@ func _ready() -> void:
 # Note: This dosent handle movement, that should 
 # be in the child node
 func _on_timer_timeout() -> void:
-	const nail = preload("res://scenes/factory_mini_game/nail.tscn")
-
+	const bird_house = preload("res://scenes/factory_mini_game/bird_house.tscn")
 	if sequence.is_empty():
 		timer.stop()
 	else:
 		var currObject: FactoryObject = sequence.pop_front()
 		match currObject:
-			FactoryObject.Nail:
-				var factory_object: Nail = nail.instantiate()
+			FactoryObject.BirdHouse:
+				var factory_object: BirdHouse = bird_house.instantiate()
 				add_child(factory_object)
 			_:
 				pass

@@ -36,15 +36,17 @@ func toggle_menu() -> void:
 
 func change_scene(scene_path: String, spawn_type: String) -> void:
 	if current_scene:
-		current_scene.call_deferred("queue_free")
+		current_scene.queue_free()  # Free the old scene before switching
+	await get_tree().process_frame  # Ensure the old scene is freed before loading the new one
 	var new_scene: Node2D = load(scene_path).instantiate()
-	var spawn_point: Node = new_scene.get_node(spawn_type)
-	var spawn_position: Vector2 = spawn_point.global_position
 	get_tree().current_scene = new_scene
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
-	var player : CharacterBody2D = current_scene.get_node("Player")
-	player.global_position = spawn_position
+	if current_scene.has_node(spawn_type):
+		var spawn_point: Node = current_scene.get_node(spawn_type)
+		var spawn_position: Vector2 = spawn_point.global_position
+		var player : CharacterBody2D = current_scene.get_node("Player")
+		player.global_position = spawn_position
 
 # Saving Logic 
 var persistent_data: Dictionary = {}

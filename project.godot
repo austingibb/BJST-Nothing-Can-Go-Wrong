@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brackey's Jam Super Team - Nothing Can Go Wrong"
-run/main_scene="res://scenes/apartment.tscn"
+run/main_scene="res://scenes/rooms/apartment.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,13 +26,16 @@ gdscript/warnings/untyped_declaration=2
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"joel": "res://characters/joel.dch"
+}
 directories/dtl_directory={
 "ball": "res://timelines/ball.dtl"
 }
 
 [display]
 
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://assets/cursor/pointer_b.png"
 
 [dotnet]

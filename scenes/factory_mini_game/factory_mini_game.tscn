@@ -1,41 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddb0oqshm6ttx"]
+[gd_scene load_steps=15 format=3 uid="uid://ddb0oqshm6ttx"]
 
-[ext_resource type="Texture2D" uid="uid://kc0apssvas0j" path="res://assets/player_placeholder.png" id="1_rmilo"]
+[ext_resource type="Script" path="res://scenes/factory_mini_game/factory_mini_game.gd" id="1_i4ljc"]
+[ext_resource type="Texture2D" uid="uid://bnnjej18i4vxr" path="res://assets/hammer_hit.png" id="2_36asr"]
+[ext_resource type="Texture2D" uid="uid://bnxftem608rn2" path="res://assets/backgrounds/factory.png" id="2_f5h8n"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="2_qm22t"]
 [ext_resource type="Script" path="res://scripts/interaction_area.gd" id="3_hapqc"]
+[ext_resource type="Texture2D" uid="uid://dnkrg8wvt5v12" path="res://assets/hammer_nothit.png" id="3_ycmsi"]
 [ext_resource type="Script" path="res://scripts/kill_box.gd" id="4_vf1yp"]
 [ext_resource type="Script" path="res://scenes/factory_mini_game/noise_box.gd" id="5_gkbdi"]
 [ext_resource type="AudioStream" uid="uid://csflbg3rgow13" path="res://assets/audio/hammer_wood.mp3" id="6_ebclp"]
+[ext_resource type="Texture2D" uid="uid://c5g5wjc3qhspk" path="res://assets/IMG_0209.png" id="10_due6y"]
+[ext_resource type="Texture2D" uid="uid://c4k3hy7h4u2in" path="res://assets/IMG_0207.png" id="12_8e5bx"]
+[ext_resource type="PackedScene" uid="uid://c7kkxry0u5evr" path="res://scenes/factory_mini_game/bird_house.tscn" id="12_870ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udkgi"]
-size = Vector2(56, 112)
+size = Vector2(103, 92)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qdvx"]
 size = Vector2(189.5, 653)
 
 [node name="FactoryMiniGame" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_i4ljc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(577, 325)
-scale = Vector2(2, 2)
-texture = ExtResource("1_rmilo")
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.85, 0.783133, 0.782, 1)
+position = Vector2(572, 327)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("2_f5h8n")
+
+[node name="Hit" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(673, 254)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_36asr")
+
+[node name="NotHit" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(792, 241)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ycmsi")
 
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2(-50, 540)
 script = ExtResource("2_qm22t")
 
 [node name="Timer" type="Timer" parent="Spawner"]
-wait_time = 0.25
+wait_time = 0.5
 
 [node name="InteractionArea" type="Area2D" parent="."]
 position = Vector2(581, 511)
 script = ExtResource("3_hapqc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, -24)
 shape = SubResource("RectangleShape2D_udkgi")
 
+[node name="Timer" type="Timer" parent="InteractionArea"]
+wait_time = 0.25
+
 [node name="KillBox" type="Area2D" parent="."]
-position = Vector2(1260, 319)
+position = Vector2(1436, 319)
 script = ExtResource("4_vf1yp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
@@ -50,6 +76,20 @@ stream = ExtResource("6_ebclp")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 325)
 
+[node name="conveyer" type="Sprite2D" parent="."]
+position = Vector2(581, 556)
+scale = Vector2(0.65, 0.694)
+texture = ExtResource("10_due6y")
+
+[node name="HitBoxUI" type="Sprite2D" parent="."]
+position = Vector2(585, 488)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_8e5bx")
+
+[node name="BirdHouse" parent="." instance=ExtResource("12_870ya")]
+position = Vector2(297, 541)
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="hit" from="InteractionArea" to="NoiseBox" method="_on_interaction_area_hit"]
+[connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="_on_timer_timeout"]
 [connection signal="area_entered" from="KillBox" to="KillBox" method="_on_area_entered"]
