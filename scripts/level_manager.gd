@@ -6,15 +6,21 @@ extends Node2D
 # mac
 # ~/Library/Application Support/Godot/app_userdata/[project_name]
 # doc: https://docs.godotengine.org/en/stable/tutorials/io/data_paths.html
-var save_path : String = "user://persistent_data.json" 
+var initialized_path : String = "user://persistent_data.json" 
+var save_path : String = "user://saved_data.json"
 
 var current_scene: Node2D = null
 var is_saved: bool = false
 var menu_instance : CanvasLayer
+var start_instance : CanvasLayer
 var menu_scene : PackedScene
+var start_menu : PackedScene
 
 func _ready() -> void:
 	current_scene = get_tree().current_scene
+	start_menu = load("res://scenes/start_menu.tscn")
+	start_instance = start_menu.instantiate()
+	get_tree().current_scene.add_child(start_instance)
 	menu_scene = load("res://scenes/main_menu.tscn")
 	call_deferred("load_game") 
 	# the call is deferred because in the Persistent node the group "Persistent" is added on _ready, so this singleton won't see it at moment (_ready of autoload cast before the others _ready)
@@ -25,7 +31,8 @@ func toggle_menu() -> void:
 		menu_instance = null
 	else:
 		menu_instance = menu_scene.instantiate()
-		get_tree().current_scene.add_child(menu_instance)
+		if get_tree().current_scene:
+			get_tree().current_scene.add_child(menu_instance)
 
 func change_scene(scene_path: String, spawn_type: String) -> void:
 	if current_scene:
@@ -41,6 +48,7 @@ func change_scene(scene_path: String, spawn_type: String) -> void:
 
 # Saving Logic 
 var persistent_data: Dictionary = {}
+var saved_data: Dictionary = {}
 
 # Initialize the file on the first load with default values
 func initialize_persistent_dictionary() -> void:
@@ -52,40 +60,49 @@ func initialize_persistent_dictionary() -> void:
 				"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
 				"is_interacted": false
 			}
-	var file : FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
+	var file : FileAccess = FileAccess.open(initialized_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(persistent_data, "\t"))
 	file.close()
 
 # override the saved data of each Persistent object
 func save_game() -> void:
+	saved_data = persistent_data.duplicate()
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
 		if persistent.has_node("Persistent"):
 			var id : String = persistent.get_node("Persistent").unique_id
-			persistent_data[id] = {
+			saved_data[id] = {
 				"position": {"x": persistent.global_position.x, "y": persistent.global_position.y},
 				"is_interacted": persistent.get_node("Persistent").is_interacted
 			}
 	
 	var file : FileAccess = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_string(JSON.stringify(persistent_data, "\t"))
+	file.store_string(JSON.stringify(saved_data, "\t"))
 	file.close()
 	is_saved = true
 
 # load the saved data (at the start of the game -> _ready)
-func load_game() -> void:
+func load_game(is_new : bool) -> void:
 	if not FileAccess.file_exists(save_path):
 		print("No save file found, initializing fresh data.")
 		initialize_persistent_dictionary()
 		return
 	
-	var file : FileAccess = FileAccess.open(save_path, FileAccess.READ)
-	persistent_data = JSON.parse_string(file.get_as_text())
+	var file : FileAccess
+	if is_new:
+		file = FileAccess.open(initialized_path, FileAccess.READ)
+	else:
+		file = FileAccess.open(save_path, FileAccess.READ)
+	
+	saved_data = JSON.parse_string(file.get_as_text())
 	file.close()
 		
 	for persistent in get_tree().get_nodes_in_group("Persistent"):
 		if persistent.has_node("Persistent"):
 			var id : String = persistent.get_node("Persistent").unique_id
-			if id in persistent_data:
-				persistent.global_position.x = persistent_data[id]["position"].x
-				persistent.global_position.y = persistent_data[id]["position"].y
-				persistent.get_node("Persistent").is_interacted = bool(persistent_data[id]["is_interacted"])
+			if id in saved_data:
+				persistent.global_position.x = saved_data[id]["position"].x
+				persistent.global_position.y = saved_data[id]["position"].y
+				persistent.get_node("Persistent").is_interacted = bool(saved_data[id]["is_interacted"])
+
+func close_start_menu() -> void:
+	start_instance.queue_free()

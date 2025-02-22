@@ -94,6 +94,8 @@ y_sort_root = NodePath("../InteractableItems")
 
 [node name="SpawnStart" parent="." instance=ExtResource("10_mot5k")]
 position = Vector2(-22, 322)
+script = null
 
 [node name="SpawnEnd" parent="." instance=ExtResource("10_mot5k")]
 position = Vector2(1092, 334)
+script = null

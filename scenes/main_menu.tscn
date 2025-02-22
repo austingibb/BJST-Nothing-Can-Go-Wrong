@@ -21,14 +21,14 @@ subpixel_positioning = 0
 font_names = PackedStringArray("Impact")
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_iqxpo"]
+[sub_resource type="SystemFont" id="SystemFont_7eifk"]
 font_names = PackedStringArray("Impact")
 font_weight = 100
 font_stretch = 50
 subpixel_positioning = 0
 
 [sub_resource type="FontVariation" id="FontVariation_rvvxb"]
-base_font = SubResource("SystemFont_iqxpo")
+base_font = SubResource("SystemFont_7eifk")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdx5u"]
 bg_color = Color(0, 0, 0, 1)
@@ -151,6 +151,7 @@ theme_override_font_sizes/font_size = 36
 text = "EXIT"
 
 [node name="ConfirmPanel" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -1,6 +1,7 @@
-[gd_scene load_steps=82 format=3 uid="uid://dm2rkj7a7abmx"]
+[gd_scene load_steps=83 format=3 uid="uid://dm2rkj7a7abmx"]
 
 [ext_resource type="PackedScene" uid="uid://dc7sdqrrow1s2" path="res://components/controller/controller_component.tscn" id="1_aha6j"]
+[ext_resource type="PackedScene" uid="uid://cfxfhllx66pw7" path="res://components/persistent.tscn" id="1_kj7uo"]
 [ext_resource type="Texture2D" uid="uid://cvonsk13gdh64" path="res://assets/sprites/blue_walk_EAST-Sheet.png" id="1_tww0p"]
 [ext_resource type="Texture2D" uid="uid://jl2ss6mxwvjq" path="res://assets/portraits/mc.png" id="1_vae0c"]
 [ext_resource type="Texture2D" uid="uid://qfm518u85cff" path="res://assets/sprites/blue_walk_SOUTH-Sheet.png" id="2_28end"]
@@ -527,6 +528,8 @@ height = 386.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 
+[node name="Persistent" parent="." instance=ExtResource("1_kj7uo")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.61509, 0.632948)
@@ -538,8 +541,8 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_668xb")
 animation = &"idle"
 
-[node name="AnimationHandlerComponent" parent="." node_paths=PackedStringArray("animated_sprite2d") instance=ExtResource("11_jej6c")]
-animated_sprite2d = NodePath("../AnimatedSprite2D")
+[node name="AnimationHandlerComponent" parent="." instance=ExtResource("11_jej6c")]
+script = null
 
 [node name="ControllerComponent" parent="." node_paths=PackedStringArray("animation_handler") instance=ExtResource("1_aha6j")]
 packed_scene = ExtResource("13_jej6c")
