@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var destination: PackedScene
+@export var destination_scene: PackedScene
+@export var destination_spawn_point: String
 
 func _on_interactable_component_interacted() -> void:
 	print("Interacted")
-	if destination:
-		LevelManager.change_scene(destination.get_path(), "SpawnEnd")
+	if destination_scene:
+		LevelManager.change_scene(destination_scene.get_path(), destination_spawn_point)

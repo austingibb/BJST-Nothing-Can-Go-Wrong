@@ -8,16 +8,22 @@ func handle_animation(input_direction: Vector2) -> void:
 		if input_direction != Vector2.ZERO:
 			if input_direction.x > 0 and input_direction.y < 0:
 				animated_sprite2d.play("NE")
+				animated_sprite2d.flip_h = false
 			elif input_direction.x > 0 and input_direction.y > 0:
 				animated_sprite2d.play("SE")
+				animated_sprite2d.flip_h = false
 			elif input_direction.x < 0 and input_direction.y < 0:
-				animated_sprite2d.play("NW")
+				animated_sprite2d.play("NE")
+				animated_sprite2d.flip_h = true
 			elif input_direction.x < 0 and input_direction.y > 0:
-				animated_sprite2d.play("SW")
+				animated_sprite2d.play("SE")
+				animated_sprite2d.flip_h = true
 			elif input_direction.x > 0:
 				animated_sprite2d.play("E")
+				animated_sprite2d.flip_h = false
 			elif input_direction.x < 0:
-				animated_sprite2d.play("W")
+				animated_sprite2d.play("E")
+				animated_sprite2d.flip_h = true
 			elif input_direction.y < 0:
 				animated_sprite2d.play("N")
 			elif input_direction.y > 0:

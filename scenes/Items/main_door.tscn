@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtwp7owuejeib"]
 
 [ext_resource type="Script" path="res://scenes/Items/door.gd" id="1_s8bua"]
-[ext_resource type="Texture2D" uid="uid://cyneagg6gqolb" path="res://assets/door.png" id="2_i6gi3"]
+[ext_resource type="Texture2D" uid="uid://ru7bih8qc10e" path="res://assets/door_main.png" id="2_8e6fg"]
 [ext_resource type="Script" path="res://components/interactable/interactable_component.gd" id="3_nkv2o"]
 [ext_resource type="Script" path="res://components/highlight_component/highlight_component.gd" id="4_7t1ck"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="5_mp63s"]
@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ledqc"]
 shader = ExtResource("5_mp63s")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 30.0
+shader_parameter/width = 5.0
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
@@ -18,16 +18,14 @@ shader_parameter/add_margins = true
 script = ExtResource("1_s8bua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("2_i6gi3")
-flip_h = true
+texture = ExtResource("2_8e6fg")
 
 [node name="InteractableComponent" type="Area2D" parent="." node_paths=PackedStringArray("highlighted_component")]
 script = ExtResource("3_nkv2o")
 highlighted_component = NodePath("../HighlightComponent")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractableComponent"]
-polygon = PackedVector2Array(-73, -131, 76, -36, 75, 139, -74, 43)
+polygon = PackedVector2Array(-90, -135, 91, -27, 91, 137, -93, 24)
 
 [node name="HighlightComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_7t1ck")

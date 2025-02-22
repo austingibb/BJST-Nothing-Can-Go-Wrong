@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b72kw8fbsbcan"]
+[gd_scene load_steps=16 format=3 uid="uid://b72kw8fbsbcan"]
 
+[ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_a56r2"]
 [ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
+[ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="2_pf6h0"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_mydxo"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="4_rtl2c"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="5_2owul"]
@@ -8,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="5_sqffp"]
 [ext_resource type="Texture2D" uid="uid://40fwpscka6pu" path="res://assets/backgrounds/Hallway_front.png" id="6_fq2gq"]
 [ext_resource type="PackedScene" uid="uid://dtwp7owuejeib" path="res://scenes/Items/main_door.tscn" id="7_g4xmd"]
+[ext_resource type="PackedScene" uid="uid://ddb0oqshm6ttx" path="res://scenes/factory_mini_game/factory_mini_game.tscn" id="10_q56bc"]
+[ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="10_sd4w6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t06s2"]
+shader = ExtResource("1_a56r2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrkd"]
 size = Vector2(1282, 42.6671)
@@ -16,6 +23,13 @@ size = Vector2(1282, 42.6671)
 size = Vector2(574.661, 42.6671)
 
 [node name="Hallway" type="Node2D"]
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+z_index = -10
+material = SubResource("ShaderMaterial_t06s2")
+position = Vector2(654, 410)
+scale = Vector2(2, 2)
+texture = ExtResource("2_pf6h0")
 
 [node name="WallCollisions" type="Node2D" parent="."]
 
@@ -69,14 +83,26 @@ sprite = NodePath("..")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildingBackground/HallwayFront/SeeThroughComponent"]
 polygon = PackedVector2Array(-164, 477, 211, 699, 1174, 67, 1174, 238, 209, 866, -167, 637)
 
-[node name="Door" parent="." instance=ExtResource("4_rtl2c")]
-position = Vector2(592, 63)
-destination = ExtResource("5_sqffp")
+[node name="SpawnApartmentDoor" parent="." instance=ExtResource("10_sd4w6")]
+position = Vector2(686, 191)
 
-[node name="MainDoor" parent="." instance=ExtResource("7_g4xmd")]
-position = Vector2(992, 31)
+[node name="SpawnWorkDoor" parent="." instance=ExtResource("10_sd4w6")]
+position = Vector2(113, 655)
+
+[node name="InteractableItems" type="Node2D" parent="."]
+
+[node name="Door" parent="InteractableItems" instance=ExtResource("4_rtl2c")]
+position = Vector2(592, 63)
+destination_scene = ExtResource("5_sqffp")
+destination_spawn_point = "SpawnHallwayDoor"
+
+[node name="MainDoor" parent="InteractableItems" instance=ExtResource("7_g4xmd")]
+z_index = 1
+position = Vector2(14, 663)
+destination_scene = ExtResource("10_q56bc")
 
 [node name="Player" parent="." instance=ExtResource("5_2owul")]
 position = Vector2(663, 111)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.8, 0.8)
