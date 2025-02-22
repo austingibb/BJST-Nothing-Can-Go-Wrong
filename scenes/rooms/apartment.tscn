@@ -41,7 +41,6 @@ rotation = -2.56363
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall"]
 position = Vector2(-24.8007, -6.10352e-05)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5g85i")
 
 [node name="Wall4" type="StaticBody2D" parent="WallCollisions"]
@@ -99,8 +98,6 @@ y_sort_root = NodePath("../InteractableItems")
 
 [node name="SpawnStart" parent="." instance=ExtResource("11_122io")]
 position = Vector2(-22, 322)
-script = null
 
 [node name="SpawnEnd" parent="." instance=ExtResource("11_122io")]
 position = Vector2(1092, 334)
-script = null
