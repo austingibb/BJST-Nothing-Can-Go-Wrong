@@ -29,7 +29,8 @@ func toggle_menu() -> void:
 
 func change_scene(scene_path: String, spawn_type: String) -> void:
 	if current_scene:
-		current_scene.call_deferred("queue_free")
+		current_scene.queue_free()  # Free the old scene before switching
+	await get_tree().process_frame  # Ensure the old scene is freed before loading the new one
 	var new_scene: Node2D = load(scene_path).instantiate()
 	var spawn_point: Node = new_scene.get_node(spawn_type)
 	var spawn_position: Vector2 = spawn_point.global_position
