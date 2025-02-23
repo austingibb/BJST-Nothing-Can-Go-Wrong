@@ -1,4 +1,9 @@
-Gamecan be played [on itch.io](https://austingibb.itch.io/no-cause-for-concern-brackeys-2025).
+# INTRO
+
+This is the source code of a video game made during a game jam in February of 2025. See this link for more details (if it is still up :| ) [Brackey's Game Jam 2025](https://itch.io/jam/brackeys-13)
+
+# Where to play
+Our game can be played [on itch.io](https://austingibb.itch.io/no-cause-for-concern-brackeys-2025).
 
 # How to run our game using the Godot Editor
 ## Intro
