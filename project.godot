@@ -22,7 +22,6 @@ LevelManager="*res://scripts/level_manager.gd"
 GlobalEnums="*res://scripts/global_enums.gd"
 RoomLoader="*res://scenes/room_loader.tscn"
 StoryManager="*res://scripts/story_manager.gd"
-RoomLoader="*res://scenes/room_loader.tscn"
 
 [debug]
 
