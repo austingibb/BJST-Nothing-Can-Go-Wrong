@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_3u05v"]
 [ext_resource type="PackedScene" uid="uid://b72kw8fbsbcan" path="res://scenes/rooms/hallway.tscn" id="8_1lk3s"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="11_122io"]
-[ext_resource type="PackedScene" uid="uid://cn1c3dqe7r478" path="res://scenes/rooms/kitchen.tscn" id="11_dc0ap"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
 shader = ExtResource("1_ih8q5")
@@ -101,14 +100,12 @@ position = Vector2(816, 401)
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = 2
 position = Vector2(1316, 494)
-destination_scene = ExtResource("8_1lk3s")
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Door2" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = -1
 position = Vector2(-41, 88)
 scale = Vector2(0.9, 0.9)
-destination_scene = ExtResource("11_dc0ap")
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]
