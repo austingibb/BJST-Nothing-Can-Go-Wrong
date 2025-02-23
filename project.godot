@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 LevelManager="*res://scripts/level_manager.gd"
+GlobalEnums="*res://scripts/global_enums.gd"
 
 [debug]
 

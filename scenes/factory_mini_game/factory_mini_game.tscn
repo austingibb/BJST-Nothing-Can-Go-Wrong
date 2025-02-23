@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddb0oqshm6ttx"]
+[gd_scene load_steps=14 format=3 uid="uid://ddb0oqshm6ttx"]
 
 [ext_resource type="Script" path="res://scenes/factory_mini_game/factory_mini_game.gd" id="1_i4ljc"]
 [ext_resource type="Texture2D" uid="uid://bnnjej18i4vxr" path="res://assets/hammer_hit.png" id="2_36asr"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://csflbg3rgow13" path="res://assets/audio/hammer_wood.mp3" id="6_ebclp"]
 [ext_resource type="Texture2D" uid="uid://c5g5wjc3qhspk" path="res://assets/IMG_0209.png" id="10_due6y"]
 [ext_resource type="Texture2D" uid="uid://c4k3hy7h4u2in" path="res://assets/IMG_0207.png" id="12_8e5bx"]
-[ext_resource type="PackedScene" uid="uid://c7kkxry0u5evr" path="res://scenes/factory_mini_game/bird_house.tscn" id="12_870ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udkgi"]
 size = Vector2(103, 92)
@@ -61,7 +60,7 @@ shape = SubResource("RectangleShape2D_udkgi")
 wait_time = 0.25
 
 [node name="KillBox" type="Area2D" parent="."]
-position = Vector2(1436, 319)
+position = Vector2(1433, 319)
 script = ExtResource("4_vf1yp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
@@ -86,10 +85,9 @@ position = Vector2(585, 488)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_8e5bx")
 
-[node name="BirdHouse" parent="." instance=ExtResource("12_870ya")]
-position = Vector2(297, 541)
-
+[connection signal="spawn_start" from="." to="Spawner" method="_on_factory_mini_game_spawn_start"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="hit" from="InteractionArea" to="NoiseBox" method="_on_interaction_area_hit"]
 [connection signal="timeout" from="InteractionArea/Timer" to="InteractionArea" method="_on_timer_timeout"]
 [connection signal="area_entered" from="KillBox" to="KillBox" method="_on_area_entered"]
+[connection signal="factory_object_killed" from="KillBox" to="." method="_on_kill_box_factory_object_killed"]
