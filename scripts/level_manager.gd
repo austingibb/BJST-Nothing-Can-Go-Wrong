@@ -34,7 +34,7 @@ func toggle_menu() -> void:
 		if get_tree().current_scene:
 			get_tree().current_scene.add_child(menu_instance)
 
-func change_scene(scene_path: String, spawn_type: String) -> void:
+func change_scene(scene_path: String, spawn_type: String = "N/A") -> void:
 	if current_scene:
 		current_scene.queue_free()  # Free the old scene before switching
 	await get_tree().process_frame  # Ensure the old scene is freed before loading the new one
@@ -42,7 +42,10 @@ func change_scene(scene_path: String, spawn_type: String) -> void:
 	get_tree().current_scene = new_scene
 	get_tree().root.add_child(new_scene)
 	current_scene = new_scene
-	if current_scene.has_node(spawn_type):
+
+	if spawn_type == "N/A":
+		print("Spawning without spawn point.")
+	elif current_scene.has_node(spawn_type):
 		var spawn_point: Node = current_scene.get_node(spawn_type)
 		var spawn_position: Vector2 = spawn_point.global_position
 		var player : CharacterBody2D = current_scene.get_node("Player")

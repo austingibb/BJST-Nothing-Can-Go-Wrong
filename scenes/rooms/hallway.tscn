@@ -96,7 +96,8 @@ destination_spawn_point = "SpawnHallwayDoor"
 [node name="MainDoor" parent="InteractableItems" instance=ExtResource("7_g4xmd")]
 z_index = 1
 position = Vector2(14, 663)
-script = null
+destination_room = 3
+destination_spawn_point = "N/A"
 
 [node name="Player" parent="." instance=ExtResource("5_2owul")]
 position = Vector2(663, 111)
