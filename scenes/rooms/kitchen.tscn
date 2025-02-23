@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cn1c3dqe7r478"]
+[gd_scene load_steps=18 format=3 uid="uid://cn1c3dqe7r478"]
 
 [ext_resource type="Texture2D" uid="uid://b1ktl267wty8c" path="res://assets/backgrounds/Kitchen_ back.png" id="1_d7kag"]
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_s8dfr"]
@@ -8,7 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="6_c12kk"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_k7co5"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="8_b6kpr"]
+[ext_resource type="Texture2D" uid="uid://cnm884pwprqeg" path="res://assets/Broom_dustpan.png" id="9_wbnnd"]
+[ext_resource type="Texture2D" uid="uid://5ty0w0mrd56r" path="res://assets/Kitchen_chair.png" id="10_f3sxf"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="10_wj8cn"]
+[ext_resource type="PackedScene" uid="uid://ccb4l276i2dhy" path="res://scenes/Items/fridge.tscn" id="10_xfkxm"]
+[ext_resource type="Texture2D" uid="uid://c2aaq1ofypn7l" path="res://assets/trash_can.png" id="12_4u3mp"]
+[ext_resource type="Texture2D" uid="uid://ukqvxwjylabx" path="res://assets/Kitchen_table.png" id="13_lt3kn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5bsew"]
 shader = ExtResource("1_s8dfr")
@@ -74,12 +79,14 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_kxcpx")
 
 [node name="KitchenBack" type="Sprite2D" parent="BuildingBackground"]
+visible = false
 position = Vector2(-209.462, 107.811)
 rotation = -0.0280216
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("1_d7kag")
 
 [node name="KitchenFront" type="Sprite2D" parent="BuildingBackground"]
+visible = false
 z_index = 1
 position = Vector2(-209.462, 107.811)
 rotation = -0.0280216
@@ -94,7 +101,34 @@ sprite = NodePath("..")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildingBackground/KitchenFront/SeeThroughComponent"]
 polygon = PackedVector2Array(-600.102, 111.858, -312.254, 280.859, 110.676, -13.1061, 118.177, 111.733, -301.726, 406.613, -596.768, 230.811)
 
+[node name="NonInteractableItems" type="Node2D" parent="."]
+position = Vector2(781, 152)
+scale = Vector2(0.1, 0.1)
+
+[node name="TrashCan" type="Sprite2D" parent="NonInteractableItems"]
+position = Vector2(-5930, 2260)
+rotation = 0.417507
+scale = Vector2(1, 1)
+texture = ExtResource("12_4u3mp")
+
+[node name="BroomDustpan" type="Sprite2D" parent="NonInteractableItems"]
+scale = Vector2(1, 1)
+texture = ExtResource("9_wbnnd")
+
+[node name="KitchenTable" type="Sprite2D" parent="NonInteractableItems"]
+position = Vector2(-4780, 3830)
+scale = Vector2(2, 2)
+texture = ExtResource("13_lt3kn")
+
+[node name="KitchenChair" type="Sprite2D" parent="NonInteractableItems"]
+position = Vector2(-3300, 4810)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_f3sxf")
+
 [node name="InteractableItems" type="Node2D" parent="."]
+
+[node name="Fridge" parent="InteractableItems" instance=ExtResource("10_xfkxm")]
+position = Vector2(628, 144)
 
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_k7co5")]
 z_index = 2

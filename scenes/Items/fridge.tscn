@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccb4l276i2dhy"]
+
+[ext_resource type="Texture2D" uid="uid://cvpbd8f6nhmi2" path="res://assets/Fridge.png" id="1_3uc3r"]
+[ext_resource type="Script" path="res://scripts/items/fridge.gd" id="1_g0b8d"]
+[ext_resource type="Script" path="res://components/interactable/interactable_component.gd" id="2_u632x"]
+[ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_t2lvk"]
+[ext_resource type="Script" path="res://components/items/item_meta_data.gd" id="4_nu6vf"]
+
+[node name="Fridge" type="Node2D"]
+script = ExtResource("1_g0b8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -85)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_3uc3r")
+
+[node name="InteractableComponent" type="Area2D" parent="." node_paths=PackedStringArray("highlighted_component")]
+script = ExtResource("2_u632x")
+highlighted_component = NodePath("../HighlightComponent")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractableComponent"]
+polygon = PackedVector2Array(-84, -173, 12, -220, 76, -169, 86, 7, -13, 53, -73, 7)
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_t2lvk")]
+sprite = NodePath("../Sprite2D")
+
+[node name="Item" type="Node" parent="."]
+script = ExtResource("4_nu6vf")
+item_aspects = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-71, 8, -12, 54, 89, 4, 30, -31)
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+[connection signal="mouse_entered" from="InteractableComponent" to="InteractableComponent" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="InteractableComponent" to="InteractableComponent" method="_on_mouse_exited"]
