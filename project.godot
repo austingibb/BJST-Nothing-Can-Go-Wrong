@@ -37,7 +37,10 @@ directories/dch_directory={
 directories/dtl_directory={
 "ball": "res://timelines/ball.dtl",
 "intro": "res://timelines/intro.dtl",
-"intro_kitchen": "res://timelines/intro_kitchen.dtl"
+"intro_kitchen": "res://timelines/intro_kitchen.dtl",
+"loop_1": "res://timelines/loop_1.dtl",
+"prelude": "res://timelines/prelude.dtl",
+"prelude_fridge": "res://timelines/prelude_fridge.dtl"
 }
 
 [display]

@@ -17,12 +17,11 @@ var menu_scene : PackedScene
 var start_menu : PackedScene
 
 func _ready() -> void:
-	pass
-	#current_scene = get_tree().current_scene
-	#start_menu = load("res://scenes/start_menu.tscn")
-	#start_instance = start_menu.instantiate()
-	#get_tree().current_scene.add_child(start_instance)
-	#menu_scene = load("res://scenes/main_menu.tscn")
+	current_scene = get_tree().current_scene
+	start_menu = load("res://scenes/start_menu.tscn")
+	start_instance = start_menu.instantiate()
+	get_tree().current_scene.add_child(start_instance)
+	menu_scene = load("res://scenes/main_menu.tscn")
 	#call_deferred("load_game")
 	# the call is deferred because in the Persistent node the group "Persistent" is added on _ready, so this singleton won't see it at moment (_ready of autoload cast before the others _ready)
 
