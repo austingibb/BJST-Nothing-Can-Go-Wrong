@@ -31,10 +31,13 @@ gdscript/warnings/untyped_declaration=2
 [dialogic]
 
 directories/dch_directory={
-"joel": "res://characters/joel.dch"
+"joel": "res://characters/joel.dch",
+"narrator": "res://characters/narrator.dch"
 }
 directories/dtl_directory={
-"ball": "res://timelines/ball.dtl"
+"ball": "res://timelines/ball.dtl",
+"intro": "res://timelines/intro.dtl",
+"intro_kitchen": "res://timelines/intro_kitchen.dtl"
 }
 
 [display]

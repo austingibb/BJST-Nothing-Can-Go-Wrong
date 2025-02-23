@@ -85,7 +85,7 @@ polygon = PackedVector2Array(-164, 477, 211, 699, 1174, 67, 1174, 238, 209, 866,
 position = Vector2(686, 191)
 
 [node name="SpawnWorkDoor" parent="." instance=ExtResource("10_sd4w6")]
-position = Vector2(113, 655)
+position = Vector2(127, 627)
 
 [node name="InteractableItems" type="Node2D" parent="."]
 
