@@ -6,5 +6,6 @@ enum ROOM_ID {
 	BEDROOM=0,
 	HALLWAY=1,
 	KITCHEN=2,
-	JOB=3
+	JOB=3,
+	GAME_END=4
 } #:kekw:

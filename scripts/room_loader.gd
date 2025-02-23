@@ -6,6 +6,7 @@ class_name RoomLoaderClass
 @export var HALLWAY_SCENE: PackedScene
 @export var KITCHEN_SCENE: PackedScene
 @export var JOB_SCENE: PackedScene
+@export var GAME_END_SCENE: PackedScene
 
 func load_room(room_id: int, spawn_string: String) -> void:
 	var scene_to_load: PackedScene = room_id_to_scene(room_id)
@@ -23,6 +24,8 @@ func room_id_to_scene(room_id: int) -> PackedScene:
 			return KITCHEN_SCENE
 		Room.ROOM_ID.JOB:
 			return JOB_SCENE
+		Room.ROOM_ID.GAME_END:
+			return GAME_END_SCENE
 		_: 
 			# defaults to apartment BAD CASE
 			return APARTMENT_SCENE

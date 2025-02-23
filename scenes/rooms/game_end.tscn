@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0t3rtlv2jugy"]
+
+[ext_resource type="Texture2D" uid="uid://wjgh6225iway" path="res://assets-non-ignored/ddw_cropped.png" id="1_fhjsy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 435.0
+offset_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DdwCropped" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(243, 151)
+scale = Vector2(0.92182, 0.650194)
+texture = ExtResource("1_fhjsy")

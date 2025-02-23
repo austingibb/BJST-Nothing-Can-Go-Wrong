@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cn1c3dqe7r478"]
+[gd_scene load_steps=19 format=3 uid="uid://cn1c3dqe7r478"]
 
 [ext_resource type="Texture2D" uid="uid://b1ktl267wty8c" path="res://assets/backgrounds/Kitchen_ back.png" id="1_d7kag"]
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_s8dfr"]
+[ext_resource type="Script" path="res://scripts/rooms/kitchen.gd" id="1_stb55"]
 [ext_resource type="Texture2D" uid="uid://diqlrbksym285" path="res://assets/backgrounds/Kitchen_ front.png" id="2_h8awg"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="2_jpyse"]
 [ext_resource type="Texture2D" uid="uid://c02iglb5nke2t" path="res://assets/backgrounds/Kitchen_floor.png" id="3_kxcpx"]
@@ -25,6 +26,7 @@ size = Vector2(810.114, 42.6671)
 size = Vector2(628.718, 42.6671)
 
 [node name="Kitchen" type="Node2D"]
+script = ExtResource("1_stb55")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 z_index = -10
@@ -79,14 +81,12 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("3_kxcpx")
 
 [node name="KitchenBack" type="Sprite2D" parent="BuildingBackground"]
-visible = false
 position = Vector2(-209.462, 107.811)
 rotation = -0.0280216
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("1_d7kag")
 
 [node name="KitchenFront" type="Sprite2D" parent="BuildingBackground"]
-visible = false
 z_index = 1
 position = Vector2(-209.462, 107.811)
 rotation = -0.0280216
@@ -108,11 +108,9 @@ scale = Vector2(0.1, 0.1)
 [node name="TrashCan" type="Sprite2D" parent="NonInteractableItems"]
 position = Vector2(-5930, 2260)
 rotation = 0.417507
-scale = Vector2(1, 1)
 texture = ExtResource("12_4u3mp")
 
 [node name="BroomDustpan" type="Sprite2D" parent="NonInteractableItems"]
-scale = Vector2(1, 1)
 texture = ExtResource("9_wbnnd")
 
 [node name="KitchenTable" type="Sprite2D" parent="NonInteractableItems"]
