@@ -131,6 +131,7 @@ layout_mode = 2
 theme_override_constants/margin_top = 24
 
 [node name="SaveButton" type="Button" parent="Panel/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,6 +140,7 @@ theme_override_font_sizes/font_size = 36
 text = "SAVE"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 24
 
