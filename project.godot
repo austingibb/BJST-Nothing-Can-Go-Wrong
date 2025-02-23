@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 LevelManager="*res://scripts/level_manager.gd"
+;StoryManager="*res://scripts/story_manager.gd"
+RoomLoader="*res://scenes/room_loader.tscn"
 
 [debug]
 
@@ -44,7 +46,7 @@ project/assembly_name="Brackey-s Jam Super Team - Nothing Can Go Wrong"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [global_group]
 

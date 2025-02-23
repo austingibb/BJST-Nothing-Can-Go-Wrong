@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=15 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
 [ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_3u05v"]
-[ext_resource type="PackedScene" uid="uid://b72kw8fbsbcan" path="res://scenes/rooms/hallway.tscn" id="8_1lk3s"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="11_122io"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
@@ -100,6 +99,7 @@ position = Vector2(816, 401)
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = 2
 position = Vector2(1316, 494)
+destination_room = 1
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Door2" parent="InteractableItems" instance=ExtResource("7_3u05v")]
