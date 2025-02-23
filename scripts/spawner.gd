@@ -6,23 +6,7 @@ enum FactoryObject {
 }
 
 @onready var timer:Timer = $Timer
-
-# demo sequence
-var sequence: Array[FactoryObject] = [
-	FactoryObject.BirdHouse,
-	FactoryObject.BirdHouse,
-	FactoryObject.BirdHouse,
-	FactoryObject.BirdHouse,
-	FactoryObject.Space,
-	FactoryObject.BirdHouse,
-	FactoryObject.Space,
-	FactoryObject.BirdHouse,
-	FactoryObject.Space,
-	FactoryObject.BirdHouse,
-]
-
-func _ready() -> void:
-	timer.start()
+var sequence: Array[GlobalEnums.FactoryObject]
 
 # on timeout checks if there is something in seq
 # if there is instantiates it and adds that child
@@ -40,4 +24,7 @@ func _on_timer_timeout() -> void:
 				add_child(factory_object)
 			_:
 				pass
-  
+
+func _on_factory_mini_game_spawn_start(sequence: Array[GlobalEnums.FactoryObject]) -> void:
+	self.sequence = sequence
+	timer.start()

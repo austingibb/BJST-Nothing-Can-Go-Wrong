@@ -1,11 +1,31 @@
 extends Node2D
 
+@export var destination_room: int
+@export var destination_spawn_point: String
+
+# demo sequence
+var sequence: Array[GlobalEnums.FactoryObject] = [
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.Space,
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.Space,
+	GlobalEnums.FactoryObject.BirdHouse,
+	GlobalEnums.FactoryObject.Space,
+	GlobalEnums.FactoryObject.BirdHouse,
+]
+var object_count: int
+
+signal spawn_start(sequence: Array[GlobalEnums.FactoryObject])
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	object_count = sequence.count(GlobalEnums.FactoryObject.BirdHouse)
+	spawn_start.emit(sequence)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_kill_box_factory_object_killed() -> void:
+	object_count -= 1
+	if object_count == 0:
+		RoomLoader.load_room(destination_room, destination_spawn_point)
