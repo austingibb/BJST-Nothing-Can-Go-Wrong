@@ -98,14 +98,15 @@ position = Vector2(816, 401)
 
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = 2
-position = Vector2(1316, 494)
+position = Vector2(1314, 490)
 destination_room = 1
 destination_spawn_point = "SpawnApartmentDoor"
 
-[node name="Door2" parent="InteractableItems" instance=ExtResource("7_3u05v")]
+[node name="Door1" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = -1
-position = Vector2(-41, 88)
+position = Vector2(-43, 90)
 scale = Vector2(0.9, 0.9)
+destination_room = 2
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]

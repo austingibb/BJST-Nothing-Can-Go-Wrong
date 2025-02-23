@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca40qwvjm2qib"]
+[gd_scene load_steps=6 format=3 uid="uid://bitq4mq8u3oqq"]
 
 [ext_resource type="Script" path="res://scripts/room_loader.gd" id="1_w8tvi"]
 [ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="2_1m7yv"]
 [ext_resource type="PackedScene" uid="uid://b72kw8fbsbcan" path="res://scenes/rooms/hallway.tscn" id="3_6xkwc"]
+[ext_resource type="PackedScene" uid="uid://cn1c3dqe7r478" path="res://scenes/rooms/kitchen.tscn" id="4_0vtne"]
 [ext_resource type="PackedScene" uid="uid://ddb0oqshm6ttx" path="res://scenes/factory_mini_game/factory_mini_game.tscn" id="4_pb82u"]
 
 [node name="RoomLoader" type="Node"]
 script = ExtResource("1_w8tvi")
 APARTMENT_SCENE = ExtResource("2_1m7yv")
 HALLWAY_SCENE = ExtResource("3_6xkwc")
+KITCHEN_SCENE = ExtResource("4_0vtne")
 JOB_SCENE = ExtResource("4_pb82u")

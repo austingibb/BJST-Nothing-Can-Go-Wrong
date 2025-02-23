@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cn1c3dqe7r478"]
+[gd_scene load_steps=13 format=3 uid="uid://cn1c3dqe7r478"]
 
 [ext_resource type="Texture2D" uid="uid://b1ktl267wty8c" path="res://assets/backgrounds/Kitchen_ back.png" id="1_d7kag"]
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_s8dfr"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="6_c12kk"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_k7co5"]
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="8_b6kpr"]
-[ext_resource type="PackedScene" uid="uid://i1quic2io8g6" path="res://scenes/rooms/apartment.tscn" id="8_rbxvd"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="10_wj8cn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5bsew"]
@@ -38,7 +37,6 @@ position = Vector2(1222, 873)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall1"]
 position = Vector2(83, -56)
 rotation = -0.584365
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ob6jo")
 
 [node name="Wall2" type="StaticBody2D" parent="WallCollisions"]
@@ -55,7 +53,6 @@ rotation = 3.16979
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/Wall3"]
 position = Vector2(31.1908, 19.0165)
 rotation = 0.54751
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ifxm5")
 
 [node name="Wall4" type="StaticBody2D" parent="WallCollisions"]
@@ -103,7 +100,7 @@ polygon = PackedVector2Array(-600.102, 111.858, -312.254, 280.859, 110.676, -13.
 z_index = 2
 position = Vector2(850, 395)
 scale = Vector2(0.9, 0.9)
-destination_scene = ExtResource("8_rbxvd")
+destination_spawn_point = "SpawnKitchenDoor"
 
 [node name="Player" parent="." instance=ExtResource("8_b6kpr")]
 position = Vector2(740, 286)

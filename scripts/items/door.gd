@@ -5,4 +5,4 @@ extends Node2D
 
 func _on_interactable_component_interacted() -> void:
 	print("Interacted with door, attempting to load room:", destination_room)
-	RoomLoader.load_room(destination_room)
+	RoomLoader.load_room(destination_room, destination_spawn_point)
