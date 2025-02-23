@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=17 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_ih8q5"]
+[ext_resource type="Script" path="res://scripts/apartment.gd" id="1_udb5f"]
 [ext_resource type="Texture2D" uid="uid://bhqed1l3o6k3e" path="res://assets/backgrounds/room_wall1.png" id="2_0mfw8"]
 [ext_resource type="Texture2D" uid="uid://ch5dtewaq6nkl" path="res://assets/backgrounds/backwall_room.png" id="3_evmdf"]
 [ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
@@ -12,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_3u05v"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="11_122io"]
+[ext_resource type="Script" path="res://components/intro_prelude_component.gd" id="13_l5weo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
 shader = ExtResource("1_ih8q5")
@@ -21,6 +23,7 @@ size = Vector2(1306.46, 46)
 
 [node name="Apartment" type="Node2D"]
 position = Vector2(2, 0)
+script = ExtResource("1_udb5f")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 z_index = -10
@@ -113,9 +116,10 @@ destination_spawn_point = "SpawnApartmentDoor"
 visible = false
 z_index = -1
 
-[node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
 script = ExtResource("5_mmfak")
 player = NodePath("../Player")
+y_sort_root = NodePath("../InteractableItems")
 
 [node name="SpawnStart" parent="." instance=ExtResource("11_122io")]
 position = Vector2(931, 198)
@@ -125,3 +129,6 @@ position = Vector2(31, 233)
 
 [node name="SpawnHallwayDoor" parent="." instance=ExtResource("11_122io")]
 position = Vector2(1208, 492)
+
+[node name="IntroPrelude" type="Node" parent="."]
+script = ExtResource("13_l5weo")

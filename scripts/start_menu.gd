@@ -12,7 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
@@ -21,5 +20,6 @@ func _on_load_game_button_pressed() -> void:
 	LevelManager.close_start_menu()
 
 func _on_new_game_button_pressed() -> void:
+	Dialogic.start("prelude")
 	LevelManager.load_game(true)
 	LevelManager.close_start_menu()

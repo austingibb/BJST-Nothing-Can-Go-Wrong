@@ -28,4 +28,5 @@ func _ready() -> void:
 func _on_kill_box_factory_object_killed() -> void:
 	object_count -= 1
 	if object_count == 0:
+		StoryManager.day_num += 1
 		RoomLoader.load_room(destination_room, destination_spawn_point)
