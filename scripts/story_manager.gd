@@ -1,3 +1,4 @@
 extends Node
 
-var current_day: int = 0
+var day_num : int = 0
+var story_told : bool = false
