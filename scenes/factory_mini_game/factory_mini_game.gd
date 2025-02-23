@@ -24,8 +24,10 @@ signal spawn_start(sequence: Array[GlobalEnums.FactoryObject])
 func _ready() -> void:
 	object_count = sequence.count(GlobalEnums.FactoryObject.BirdHouse)
 	spawn_start.emit(sequence)
+	GlobalMusicPlayer.change_music(3)
 
 func _on_kill_box_factory_object_killed() -> void:
 	object_count -= 1
 	if object_count == 0:
 		RoomLoader.load_room(destination_room, destination_spawn_point)
+		GlobalMusicPlayer.change_music(0)

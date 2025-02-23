@@ -1,5 +1,4 @@
 extends Node
-
 class_name RoomLoaderClass
 
 @export var APARTMENT_SCENE: PackedScene

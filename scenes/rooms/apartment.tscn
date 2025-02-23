@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=16 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
+[ext_resource type="Script" path="res://scenes/rooms/apartment.gd" id="1_cgkqk"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_ih8q5"]
@@ -21,6 +22,7 @@ size = Vector2(1306.46, 46)
 
 [node name="Apartment" type="Node2D"]
 position = Vector2(2, 0)
+script = ExtResource("1_cgkqk")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
 z_index = -10

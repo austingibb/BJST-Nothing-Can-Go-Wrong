@@ -16,11 +16,3 @@ func _process(delta: float) -> void:
 			push_warning("No Animation Handler assigned!")
 		owner.velocity = input_direction * speed
 		owner.move_and_slide()
-
-# this is the relevant code for handling opening the next level proof of concept
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
-		toggle_menu()
-	
-func toggle_menu() -> void:
-	LevelManager.toggle_menu()

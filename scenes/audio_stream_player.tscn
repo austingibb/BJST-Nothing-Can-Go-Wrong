@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://csn6ty20tyj4g"]
+[gd_scene load_steps=5 format=3 uid="uid://csn6ty20tyj4g"]
 
 [ext_resource type="Script" path="res://scripts/audio_stream_player.gd" id="1_tl4rl"]
+[ext_resource type="AudioStream" uid="uid://o8vqpimiwkyh" path="res://assets/audio/menu.wav" id="2_0wme1"]
+[ext_resource type="AudioStream" uid="uid://duodaf8nivikj" path="res://assets/audio/Morning (Normal).wav" id="3_v8u6k"]
+[ext_resource type="AudioStream" uid="uid://c6jm1m6llbp70" path="res://assets/audio/Factory.wav" id="4_hlpe4"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 script = ExtResource("1_tl4rl")
+MAIN_MENU = ExtResource("2_0wme1")
+MORNING = ExtResource("3_v8u6k")
+FACTORY = ExtResource("4_hlpe4")

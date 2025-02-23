@@ -1,13 +1,23 @@
 extends AudioStreamPlayer
 
-var menu_music: AudioStream = preload("res://assets/audio/menu.wav")
+@export var MAIN_MENU: AudioStream
+@export var MORNING: AudioStream
+@export var FACTORY: AudioStream
+
+var current_song: AudioStream 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	stream = menu_music
+	current_song = MORNING
+	stream = current_song
 	play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+func change_music(room_id: int) -> void:
+	stop()
+	match room_id:
+		3:
+			current_song = FACTORY
+		_:
+			current_song = MORNING
+	stream = current_song
+	play()

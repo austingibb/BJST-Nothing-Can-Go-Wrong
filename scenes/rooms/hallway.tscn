@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b72kw8fbsbcan"]
+[gd_scene load_steps=15 format=3 uid="uid://b72kw8fbsbcan"]
 
 [ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_a56r2"]
 [ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://40fwpscka6pu" path="res://assets/backgrounds/Hallway_front.png" id="6_fq2gq"]
 [ext_resource type="PackedScene" uid="uid://dtwp7owuejeib" path="res://scenes/Items/main_door.tscn" id="7_g4xmd"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="10_sd4w6"]
+[ext_resource type="AudioStream" uid="uid://duodaf8nivikj" path="res://assets/audio/Morning (Normal).wav" id="11_1hlct"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t06s2"]
 shader = ExtResource("1_a56r2")
@@ -104,3 +105,6 @@ position = Vector2(663, 111)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.8, 0.8)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1hlct")

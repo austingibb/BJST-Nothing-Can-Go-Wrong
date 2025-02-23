@@ -15,24 +15,39 @@ var menu_instance : CanvasLayer
 var start_instance : CanvasLayer
 var menu_scene : PackedScene
 var start_menu : PackedScene
+var audio_player: PackedScene
+
+var showMenu: bool = false
 
 func _ready() -> void:
 	current_scene = get_tree().current_scene
 	start_menu = load("res://scenes/start_menu.tscn")
 	start_instance = start_menu.instantiate()
 	get_tree().current_scene.add_child(start_instance)
-	menu_scene = load("res://scenes/main_menu.tscn")
+	#menu_scene = load("res://scenes/main_menu.tscn")
+	#menu_instance = menu_scene.instantiate()
+	#get_tree().current_scene.add_child(menu_instance)
+	#menu_instance.visible = false
+	
 	#call_deferred("load_game")
 	# the call is deferred because in the Persistent node the group "Persistent" is added on _ready, so this singleton won't see it at moment (_ready of autoload cast before the others _ready)
 
-func toggle_menu() -> void:
-	if menu_instance:
-		menu_instance.queue_free()
-		menu_instance = null
-	else:
-		menu_instance = menu_scene.instantiate()
-		if get_tree().current_scene:
-			get_tree().current_scene.add_child(menu_instance)
+#func toggle_menu() -> void:
+	#if showMenu:
+		## stop showing
+		#menu_instance.visible = false
+		#showMenu = false
+	#else: 
+		## start showing
+		#menu_instance.visible = true
+		#showMenu = true
+	#if menu_instance:
+		#menu_instance.queue_free()
+		#menu_instance = null
+	#else:
+		#menu_instance = menu_scene.instantiate()
+		#if get_tree().current_scene:
+			#get_tree().current_scene.add_child(menu_instance)
 
 func change_scene(scene_path: String, spawn_type: String = "N/A") -> void:
 	if current_scene:
