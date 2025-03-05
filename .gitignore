@@ -3,6 +3,7 @@ assets/
 addons/
 **/.DS_Store
 builds/*
+builds/web/*
 !builds/
 !builds/web/
 assets.*.zip
