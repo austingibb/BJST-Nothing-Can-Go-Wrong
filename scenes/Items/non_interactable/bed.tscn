@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://4wblpk02j8lk"]
+
+[ext_resource type="Texture2D" uid="uid://dha1bh3t3qlvj" path="res://assets/bed.png" id="1_6ajyy"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="2_4ovkj"]
+
+[node name="Bed" type="Sprite2D" groups=["item_owner"]]
+position = Vector2(969, 188)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_6ajyy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(265, -405, 765, 0, -215, 650, -700, 340)
+
+[node name="Item" parent="." instance=ExtResource("2_4ovkj")]
+
+[node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
+position = Vector2(-800, 215)
+
+[editable path="Item"]

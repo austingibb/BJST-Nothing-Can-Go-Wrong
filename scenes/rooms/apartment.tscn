@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
 [ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_3u05v"]
-[ext_resource type="Texture2D" uid="uid://dhxv360fm0bb2" path="res://assets/Table.png" id="8_42deh"]
-[ext_resource type="Texture2D" uid="uid://dha1bh3t3qlvj" path="res://assets/bed.png" id="9_up3h3"]
-[ext_resource type="Texture2D" uid="uid://iexkca2kh0ws" path="res://assets/couch.png" id="11_1yeuo"]
+[ext_resource type="PackedScene" uid="uid://bifsn2v6kivk6" path="res://scenes/Items/non_interactable/night_stand.tscn" id="10_c4eci"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="11_122io"]
-[ext_resource type="Texture2D" uid="uid://cuf066fbm1r2x" path="res://assets/Hall_table.png" id="12_fth2f"]
+[ext_resource type="PackedScene" uid="uid://4wblpk02j8lk" path="res://scenes/Items/non_interactable/bed.tscn" id="11_s5xvo"]
+[ext_resource type="PackedScene" uid="uid://cwvvihpuwp08i" path="res://scenes/Items/non_interactable/couch.tscn" id="12_l36o1"]
+[ext_resource type="PackedScene" uid="uid://c0n5350pphtjc" path="res://scenes/Items/non_interactable/hall_table.tscn" id="13_g8iod"]
 [ext_resource type="Texture2D" uid="uid://bnq1dfmrfts7" path="res://assets/Portrait.png" id="13_h7gq1"]
 [ext_resource type="Texture2D" uid="uid://cejb6aabg3n3g" path="res://assets/Untitled2_20250223114326.png" id="14_wo1vi"]
 
@@ -82,7 +82,7 @@ position = Vector2(557, 340)
 texture = ExtResource("3_evmdf")
 
 [node name="Wall" type="Sprite2D" parent="BuildingBackground"]
-z_index = 1
+z_index = 2
 position = Vector2(558, 340)
 texture = ExtResource("2_0mfw8")
 
@@ -105,25 +105,13 @@ position = Vector2(304, 550)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_wo1vi")
 
-[node name="Table" type="Sprite2D" parent="NonInteractbableObjects"]
-position = Vector2(944, 54)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("8_42deh")
+[node name="NightStand" parent="NonInteractbableObjects" instance=ExtResource("10_c4eci")]
 
-[node name="Bed" type="Sprite2D" parent="NonInteractbableObjects"]
-position = Vector2(969, 188)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_up3h3")
+[node name="Bed" parent="NonInteractbableObjects" instance=ExtResource("11_s5xvo")]
 
-[node name="Couch" type="Sprite2D" parent="NonInteractbableObjects"]
-position = Vector2(442, 214)
-scale = Vector2(0.18, 0.18)
-texture = ExtResource("11_1yeuo")
+[node name="Couch" parent="NonInteractbableObjects" instance=ExtResource("12_l36o1")]
 
-[node name="HallTable" type="Sprite2D" parent="NonInteractbableObjects"]
-position = Vector2(-222, 360)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_fth2f")
+[node name="HallTable" parent="NonInteractbableObjects" instance=ExtResource("13_g8iod")]
 
 [node name="InteractableItems" type="Node2D" parent="."]
 

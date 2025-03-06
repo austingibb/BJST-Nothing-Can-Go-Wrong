@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwvvihpuwp08i"]
+
+[ext_resource type="Texture2D" uid="uid://iexkca2kh0ws" path="res://assets/couch.png" id="1_opxls"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="2_57evf"]
+
+[node name="Couch" type="Sprite2D" groups=["item_owner"]]
+position = Vector2(442, 222)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("1_opxls")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-622.222, 155.556, 100, 661.111, 511.111, 522.222, -227.778, 16.6667)
+
+[node name="Item" parent="." instance=ExtResource("2_57evf")]
+
+[node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
+position = Vector2(-600, 277.778)
+
+[editable path="Item"]

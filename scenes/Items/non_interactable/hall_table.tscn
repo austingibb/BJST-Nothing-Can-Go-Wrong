@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0n5350pphtjc"]
+
+[ext_resource type="Texture2D" uid="uid://cuf066fbm1r2x" path="res://assets/Hall_table.png" id="1_ogrfn"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="2_4x0e7"]
+
+[node name="HallTable" type="Sprite2D" groups=["item_owner"]]
+position = Vector2(-222, 360)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ogrfn")
+
+[node name="Item" parent="." instance=ExtResource("2_4x0e7")]
+position = Vector2(255.756, -268.252)
+
+[node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
+position = Vector2(494.244, 293.252)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(15, 5)
+polygon = PackedVector2Array(235, -370, 755, 25, -330, 735, -825, 350)
+
+[editable path="Item"]

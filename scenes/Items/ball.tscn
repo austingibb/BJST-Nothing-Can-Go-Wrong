@@ -28,7 +28,7 @@ sprite = NodePath("../Sprite2D")
 [node name="Item" parent="." instance=ExtResource("5_haq5u")]
 
 [node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
-position = Vector2(0, 111.57)
+position = Vector2(0, 121.901)
 
 [connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
 

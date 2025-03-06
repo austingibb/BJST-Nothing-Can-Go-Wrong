@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bifsn2v6kivk6"]
+
+[ext_resource type="Texture2D" uid="uid://dhxv360fm0bb2" path="res://assets/Table.png" id="1_og42b"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="2_4b8ow"]
+
+[node name="NightStand" type="Sprite2D" groups=["item_owner"]]
+position = Vector2(944, 54)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_og42b")
+
+[node name="Item" parent="." instance=ExtResource("2_4b8ow")]
+
+[node name="YSortMarker2D" parent="Item" index="0"]
+position = Vector2(-480, 320)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-200, 50, 370, 310, -10, 580, -560, 300)
+
+[editable path="Item"]
