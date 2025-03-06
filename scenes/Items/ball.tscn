@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scripts/items/ball.gd" id="1_wabe8"]
 [ext_resource type="PackedScene" uid="uid://cyor726jo7tfe" path="res://components/interactable/interactable_component.tscn" id="2_sdtvd"]
 [ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_tkvon"]
-[ext_resource type="Script" path="res://components/items/item_meta_data.gd" id="5_iw3v1"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="5_haq5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4775w"]
 radius = 116.0
 
-[node name="Ball" type="Node2D"]
+[node name="Ball" type="Node2D" groups=["item_owner"]]
 scale = Vector2(0.5, 0.484)
 script = ExtResource("1_wabe8")
 
@@ -25,8 +25,11 @@ shape = SubResource("CircleShape2D_4775w")
 [node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_tkvon")]
 sprite = NodePath("../Sprite2D")
 
-[node name="Item" type="Node" parent="."]
-script = ExtResource("5_iw3v1")
-item_aspects = 1
+[node name="Item" parent="." instance=ExtResource("5_haq5u")]
+
+[node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
+position = Vector2(0, 111.57)
 
 [connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+
+[editable path="Item"]

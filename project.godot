@@ -59,6 +59,8 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 [global_group]
 
 Player="group for only and only player"
+item_owner=""
+y_sort_marker="Used to indicate a Marker2D is meant to be used as position for y sorting."
 
 [input]
 

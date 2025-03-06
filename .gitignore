@@ -7,3 +7,4 @@ builds/web/*
 !builds/
 !builds/web/
 assets.*.zip
+.vscode/*

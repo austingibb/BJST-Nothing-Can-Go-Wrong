@@ -1,12 +1,8 @@
 extends Node2D
 
-enum FactoryObject {
-	BirdHouse,
-	Space
-}
 
 @onready var timer:Timer = $Timer
-var sequence: Array[GlobalEnums.FactoryObject]
+var sequence: Array[GlobalConstants.FactoryObject]
 
 # on timeout checks if there is something in seq
 # if there is instantiates it and adds that child
@@ -17,14 +13,14 @@ func _on_timer_timeout() -> void:
 	if sequence.is_empty():
 		timer.stop()
 	else:
-		var currObject: FactoryObject = sequence.pop_front()
+		var currObject: GlobalConstants.FactoryObject = sequence.pop_front()
 		match currObject:
-			FactoryObject.BirdHouse:
+			GlobalConstants.FactoryObject.BirdHouse:
 				var factory_object: BirdHouse = bird_house.instantiate()
 				add_child(factory_object)
 			_:
 				pass
 
-func _on_factory_mini_game_spawn_start(sequence: Array[GlobalEnums.FactoryObject]) -> void:
+func _on_factory_mini_game_spawn_start(sequence: Array[GlobalConstants.FactoryObject]) -> void:
 	self.sequence = sequence
 	timer.start()

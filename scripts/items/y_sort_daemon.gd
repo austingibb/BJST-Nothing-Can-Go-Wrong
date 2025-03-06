@@ -26,20 +26,41 @@ func _process(_delta: float) -> void:
 
 		# If this node is an Item
 		if current_node is BjstItem:
-			var result : Array = _get_global_center_y(current_node)
-			var successfully_got_global_center : bool = result[0]
-			var center_y : float = result[1]
-			if successfully_got_global_center:
-				if center_y < player_y:
-					current_node.owner.z_index = -1
-				else:
-					current_node.owner.z_index = 1
+			_y_sort_item(current_node, player_y)
 
 #
 # Helper Functions
 #
 # We might find these to be generally useful, so we'll put them in a separate section eventually.
 #
+
+func _find_marker_node(item_node: Node) -> Marker2D:
+	for child_node in item_node.get_children():
+		if child_node.get_groups().find(GlobalConstants.GetGroupName(GlobalConstants.GlobalGroup.Y_SORT_MARKER)) != -1\
+			and child_node is Marker2D:
+			return child_node
+	return null
+
+func _y_sort_item(item: Node, player_y: float) -> void:
+	var y_sort_marker : Marker2D = _find_marker_node(item)
+	var item_y_pos : float
+	if y_sort_marker:
+		item_y_pos = y_sort_marker.global_position.y
+	else:
+		# If no y_sort_marker is found, use the center of the item's shape
+		var result : Array = _get_global_center_y(item)
+		var successfully_got_global_center : bool = result[0]
+		item_y_pos = result[1]
+		if not successfully_got_global_center:
+			return
+
+	var player_shape : Node = _find_player_shape(player)
+	if not player_shape:
+		return
+	if item_y_pos < player_y:
+		item.owner.z_index = -1
+	else:
+		item.owner.z_index = 1
 
 # Finds the player's shape (CollisionShape2D/CollisionPolygon2D)
 func _find_player_shape(root_node: Node) -> Node:
