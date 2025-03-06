@@ -2,8 +2,8 @@ extends Node
 
 class_name YSortDaemon
 
-@export var player: Node	 # A CharacterBody2D-based scene
-@export var y_sort_root: Node
+@export var player: Node # A CharacterBody2D-based scene
+@export var y_sort_root: Array[Node] # An array of Item-based scenes
 
 func _process(_delta: float) -> void:
 	if not player or not y_sort_root:
@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	var player_y : float = player_shape.get_global_position().y
 
 	# BFS through y_sort_root, looking for 'Item' nodes
-	var to_visit : Array[Node] = [y_sort_root]
+	var to_visit : Array[Node] = y_sort_root.duplicate()
 	while to_visit.size() > 0:
 		var current_node : Node = to_visit.pop_front()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=22 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
@@ -157,7 +157,7 @@ z_index = -1
 [node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
 script = ExtResource("5_mmfak")
 player = NodePath("../Player")
-y_sort_root = NodePath("../InteractableItems")
+y_sort_root = [NodePath("../InteractableItems"), NodePath("../NonInteractbableObjects")]
 
 [node name="SpawnStart" parent="." instance=ExtResource("11_122io")]
 position = Vector2(931, 198)
