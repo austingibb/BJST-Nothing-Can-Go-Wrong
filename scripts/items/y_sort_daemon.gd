@@ -2,18 +2,13 @@ extends Node
 
 class_name YSortDaemon
 
-@export var player: Node # A CharacterBody2D-based scene
 @export var y_sort_root: Array[Node] # An array of Item-based scenes
 
-func _process(_delta: float) -> void:
-	if not player or not y_sort_root:
-		return
+var PRINT_FREQUENCY : int = 60
 
-	# Find the player's CollisionShape2D or CollisionPolygon2D
-	var player_shape : Node = _find_player_shape(player)
-	if not player_shape:
+func _process(_delta: float) -> void:
+	if not y_sort_root or y_sort_root.size() == 0:
 		return
-	var player_y : float = player_shape.get_global_position().y
 
 	# BFS through y_sort_root, looking for 'Item' nodes
 	var to_visit : Array[Node] = y_sort_root.duplicate()
@@ -26,7 +21,7 @@ func _process(_delta: float) -> void:
 
 		# If this node is an Item
 		if current_node is BjstItem:
-			_y_sort_item(current_node, player_y)
+			_y_sort_item(current_node)
 
 #
 # Helper Functions
@@ -41,7 +36,7 @@ func _find_marker_node(item_node: Node) -> Marker2D:
 			return child_node
 	return null
 
-func _y_sort_item(item: Node, player_y: float) -> void:
+func _y_sort_item(item: Node) -> void:
 	var y_sort_marker : Marker2D = _find_marker_node(item)
 	var item_y_pos : float
 	if y_sort_marker:
@@ -54,24 +49,12 @@ func _y_sort_item(item: Node, player_y: float) -> void:
 		if not successfully_got_global_center:
 			return
 
-	var player_shape : Node = _find_player_shape(player)
-	if not player_shape:
-		return
-	if item_y_pos < player_y:
-		item.owner.z_index = -1
-	else:
-		item.owner.z_index = 1
-
-# Finds the player's shape (CollisionShape2D/CollisionPolygon2D)
-func _find_player_shape(root_node: Node) -> Node:
-	var queue : Array[Node] = [root_node]
-	while queue.size() > 0:
-		var candidate : Node = queue.pop_front()
-		for child in candidate.get_children():
-			queue.append(child)
-		if candidate is CollisionShape2D or candidate is CollisionPolygon2D:
-			return candidate
-	return null
+	# use sigmoid function to set a z index that has an upper bound of 100 and a lower bound of 0
+	# a normalized sigmoid is an s-shaped curve that ranges from 0 to 1
+	# we can use this to set the z index of the item
+	item.owner.z_index = clamp(100/(1+pow(2, -item_y_pos/200.0)), 0, 100)
+	if Engine.get_frames_drawn() % PRINT_FREQUENCY == 0:
+		print("Z index set to ", item.owner.z_index, " for y pos ", item_y_pos)
 
 # Finds the body node under an owner node (only looks at direct children, not grandchildren, etc...): A body node is one of these: Area2D, CharacterBody2D, or StaticBody2D
 func _find_body_node(owner_node: Node) -> Node:

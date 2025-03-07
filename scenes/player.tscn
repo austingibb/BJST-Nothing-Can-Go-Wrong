@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dm2rkj7a7abmx"]
+[gd_scene load_steps=81 format=3 uid="uid://dm2rkj7a7abmx"]
 
 [ext_resource type="PackedScene" uid="uid://dc7sdqrrow1s2" path="res://components/controller/controller_component.tscn" id="1_aha6j"]
 [ext_resource type="PackedScene" uid="uid://cfxfhllx66pw7" path="res://components/persistent.tscn" id="1_kj7uo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhle6n2bbsif7" path="res://assets/sprites/SW.png" id="8_20cek"]
 [ext_resource type="Texture2D" uid="uid://dqgpjt2wedxhk" path="res://assets/sprites/W.png" id="9_fbbft"]
 [ext_resource type="PackedScene" uid="uid://m4aq8ioa75os" path="res://components/animation_handler_component/animation_handler_component.tscn" id="11_jej6c"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="12_mh14w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oagmw"]
 atlas = ExtResource("2_5rigy")
@@ -523,7 +524,7 @@ height = 106.0
 radius = 133.0
 height = 386.0
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player", "item_owner"]]
 
 [node name="Persistent" parent="." instance=ExtResource("1_kj7uo")]
 
@@ -550,3 +551,10 @@ shape = SubResource("CapsuleShape2D_5xv16")
 position = Vector2(0, 100)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_4ckrd")
+
+[node name="Item" parent="." instance=ExtResource("12_mh14w")]
+
+[node name="YSortMarker2D" parent="Item" index="0"]
+position = Vector2(-7, 102)
+
+[editable path="Item"]

@@ -82,7 +82,7 @@ position = Vector2(557, 340)
 texture = ExtResource("3_evmdf")
 
 [node name="Wall" type="Sprite2D" parent="BuildingBackground"]
-z_index = 2
+z_index = 100
 position = Vector2(558, 340)
 texture = ExtResource("2_0mfw8")
 
@@ -110,6 +110,7 @@ texture = ExtResource("14_wo1vi")
 [node name="Bed" parent="NonInteractbableObjects" instance=ExtResource("11_s5xvo")]
 
 [node name="Couch" parent="NonInteractbableObjects" instance=ExtResource("12_l36o1")]
+position = Vector2(442, 222)
 
 [node name="HallTable" parent="NonInteractbableObjects" instance=ExtResource("13_g8iod")]
 
@@ -120,7 +121,7 @@ position = Vector2(1153, 369)
 scale = Vector2(0.3, 0.291)
 
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
-z_index = 2
+z_index = 101
 position = Vector2(1314, 490)
 destination_room = 1
 destination_spawn_point = "SpawnApartmentDoor"
@@ -142,10 +143,9 @@ zoom = Vector2(0.8, 0.8)
 visible = false
 z_index = -1
 
-[node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("player", "y_sort_root")]
+[node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("y_sort_root")]
 script = ExtResource("5_mmfak")
-player = NodePath("../Player")
-y_sort_root = [NodePath("../InteractableItems"), NodePath("../NonInteractbableObjects")]
+y_sort_root = [NodePath("../InteractableItems"), NodePath("../NonInteractbableObjects"), NodePath("../Player")]
 
 [node name="SpawnStart" parent="." instance=ExtResource("11_122io")]
 position = Vector2(931, 198)
