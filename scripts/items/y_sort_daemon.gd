@@ -5,6 +5,7 @@ class_name YSortDaemon
 @export var y_sort_root: Array[Node] # An array of Item-based scenes
 
 var PRINT_FREQUENCY : int = 60
+var ENABLE_PRINT : bool = false
 
 func _process(_delta: float) -> void:
 	if not y_sort_root or y_sort_root.size() == 0:
@@ -53,7 +54,7 @@ func _y_sort_item(item: Node) -> void:
 	# a normalized sigmoid is an s-shaped curve that ranges from 0 to 1
 	# we can use this to set the z index of the item
 	item.owner.z_index = clamp(100/(1+pow(2, -item_y_pos/200.0)), 0, 100)
-	if Engine.get_frames_drawn() % PRINT_FREQUENCY == 0:
+	if Engine.get_frames_drawn() % PRINT_FREQUENCY == 0 and ENABLE_PRINT:
 		print("Z index set to ", item.owner.z_index, " for y pos ", item_y_pos)
 
 # Finds the body node under an owner node (only looks at direct children, not grandchildren, etc...): A body node is one of these: Area2D, CharacterBody2D, or StaticBody2D
