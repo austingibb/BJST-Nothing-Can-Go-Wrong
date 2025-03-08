@@ -174,8 +174,12 @@ offset_bottom = 59.0
 grow_horizontal = 0
 script = ExtResource("21_aq4aw")
 
-[node name="ApartmentProphet" type="Node2D" parent="."]
+[node name="ApartmentProphet" type="Node2D" parent="." node_paths=PackedStringArray("ballNode")]
 script = ExtResource("21_i8xe5")
+ballNode = NodePath("../InteractableItems/Ball")
 
 [connection signal="cheat_activated" from="CheatManager" to="ApartmentProphet" method="_on_cheat_manager_cheat_activated"]
 [connection signal="cheat_state_changed" from="CheatManager" to="CheatManager/CanvasLayer/ColorRect" method="_on_cheat_manager_cheat_state_changed"]
+
+[editable path="InteractableItems/Ball"]
+[editable path="InteractableItems/Ball/Item"]

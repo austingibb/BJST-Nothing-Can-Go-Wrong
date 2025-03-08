@@ -1,22 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccx3p7phd2qb2"]
+[gd_scene load_steps=10 format=3 uid="uid://ccx3p7phd2qb2"]
 
 [ext_resource type="Texture2D" uid="uid://dghjqo8br0xv4" path="res://assets/item_placeholder.png" id="1_ogmv6"]
 [ext_resource type="Script" path="res://scripts/items/ball.gd" id="1_wabe8"]
+[ext_resource type="Shader" path="res://shaders/replace_colors.gdshader" id="2_8a4yw"]
 [ext_resource type="PackedScene" uid="uid://cyor726jo7tfe" path="res://components/interactable/interactable_component.tscn" id="2_sdtvd"]
 [ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_tkvon"]
 [ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="5_haq5u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pp6fu"]
+shader = ExtResource("2_8a4yw")
+shader_parameter/colors_to_replace = PackedColorArray(0, 0, 0, 1)
+shader_parameter/replacement_colors = null
+shader_parameter/enabled = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb43i"]
+shader = ExtResource("2_8a4yw")
+shader_parameter/colors_to_replace = PackedColorArray(0.764706, 0.00392157, 0, 1)
+shader_parameter/replacement_colors = PackedColorArray(0, 0, 1, 1)
+shader_parameter/enabled = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4775w"]
 radius = 116.0
 
 [node name="Ball" type="Node2D" groups=["item_owner"]]
+material = SubResource("ShaderMaterial_pp6fu")
 scale = Vector2(0.5, 0.484)
 script = ExtResource("1_wabe8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hb43i")
 texture = ExtResource("1_ogmv6")
 
 [node name="InteractableComponent" parent="." node_paths=PackedStringArray("highlighted_component") instance=ExtResource("2_sdtvd")]
+visible = false
 highlighted_component = NodePath("../HighlightComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent"]
