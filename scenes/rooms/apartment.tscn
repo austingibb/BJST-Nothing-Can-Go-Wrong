@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=25 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bnq1dfmrfts7" path="res://assets/Portrait.png" id="13_h7gq1"]
 [ext_resource type="Texture2D" uid="uid://cejb6aabg3n3g" path="res://assets/Untitled2_20250223114326.png" id="14_wo1vi"]
 [ext_resource type="Script" path="res://scripts/cheat-manager/cheat_manager.gd" id="20_1c652"]
+[ext_resource type="Script" path="res://scripts/cheat-manager/indicator_light.gd" id="21_aq4aw"]
 [ext_resource type="Script" path="res://scripts/god-prophet/apartment_prophet.gd" id="21_i8xe5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
@@ -29,7 +30,7 @@ shader = ExtResource("1_ih8q5")
 size = Vector2(1306.46, 46)
 
 [node name="Apartment" type="Node2D"]
-position = Vector2(2, 0)
+position = Vector2(1, 0)
 script = ExtResource("1_udb5f")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
@@ -160,7 +161,21 @@ position = Vector2(1208, 492)
 [node name="CheatManager" type="Node2D" parent="."]
 script = ExtResource("20_1c652")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="CheatManager"]
+
+[node name="ColorRect" type="ColorRect" parent="CheatManager/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 19.0
+offset_right = -25.0
+offset_bottom = 59.0
+grow_horizontal = 0
+script = ExtResource("21_aq4aw")
+
 [node name="ApartmentProphet" type="Node2D" parent="."]
 script = ExtResource("21_i8xe5")
 
 [connection signal="cheat_activated" from="CheatManager" to="ApartmentProphet" method="_on_cheat_manager_cheat_activated"]
+[connection signal="cheat_state_changed" from="CheatManager" to="CheatManager/CanvasLayer/ColorRect" method="_on_cheat_manager_cheat_state_changed"]

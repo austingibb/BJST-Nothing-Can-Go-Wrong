@@ -19,7 +19,7 @@ enum EventType {
 	MODIFIER_PRESS,
 	ARROW,
 	SUBMIT,
-	RESET
+	MODIFIER_RELEASE
 }
 
 signal cheat_state_changed(new_state: int)
@@ -52,16 +52,23 @@ func _input(event: InputEvent) -> void:
 					update_state(result)
 				elif event.keycode == submit_key:
 					# Submit key pressed.
-					if current_state == CheatInputState.EXACT_UNAMBIGUOUS:
+					if current_state == CheatInputState.EXACT_UNAMBIGUOUS or\
+					 current_state == CheatInputState.EXACT_AMBIGUOUS:
 						var action: String = cheat_config["cheats"].get(current_sequence)
 						if action != null:
 							emit_signal("cheat_activated", action)
+
 					var result: Dictionary = transition_fn(null, EventType.SUBMIT, current_state, current_sequence)
 					update_state(result)
 		else:
 			if event.keycode == modifier_key:
 				# Modifier key released.
-				var result: Dictionary = transition_fn(null, EventType.RESET, current_state, current_sequence)
+				var result: Dictionary = transition_fn(null, EventType.MODIFIER_RELEASE, current_state, current_sequence)
+				if current_state == CheatInputState.EXACT_UNAMBIGUOUS or\
+					current_state == CheatInputState.EXACT_AMBIGUOUS:
+					var action: String = cheat_config["cheats"].get(current_sequence)
+					if action != null:
+						emit_signal("cheat_activated", action)
 				update_state(result)
 
 # Transition function: takes an event, event_type, current state and sequence,
@@ -118,7 +125,7 @@ func transition_fn(event: InputEvent, event_type: CheatManager.EventType, state:
 		print("  -> Submit key pressed, executing cheat (if valid)")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
-	elif event_type == EventType.RESET:
+	elif event_type == EventType.MODIFIER_RELEASE:
 		print("  -> Reset event, clearing sequence and returning to hidden")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
@@ -163,6 +170,6 @@ func _arrow_from_event(event: InputEventKey) -> String:
 
 func _on_tree_changed() -> void:
 	# Reset state on scene change.
-	var result: Dictionary = transition_fn(null, EventType.RESET, current_state, current_sequence)
+	var result: Dictionary = transition_fn(null, EventType.MODIFIER_RELEASE, current_state, current_sequence)
 	update_state(result)
 	pass
