@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=26 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://scripts/cheat-manager/cheat_manager.gd" id="20_1c652"]
 [ext_resource type="Script" path="res://scripts/cheat-manager/indicator_light.gd" id="21_aq4aw"]
 [ext_resource type="Script" path="res://scripts/god-prophet/apartment_prophet.gd" id="21_i8xe5"]
+[ext_resource type="Script" path="res://components/controller/controller_orchestrator.gd" id="23_3wfrb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
 shader = ExtResource("1_ih8q5")
@@ -141,13 +142,19 @@ position = Vector2(241, 201)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.8, 0.8)
 
+[node name="Player2" parent="." instance=ExtResource("1_84olp")]
+position = Vector2(569, 456)
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+zoom = Vector2(0.8, 0.8)
+
 [node name="Motivation" parent="." instance=ExtResource("4_pmqfa")]
 visible = false
 z_index = -1
 
 [node name="YSortDaemon" type="Node" parent="." node_paths=PackedStringArray("y_sort_root")]
 script = ExtResource("5_mmfak")
-y_sort_root = [NodePath("../InteractableItems"), NodePath("../NonInteractbableObjects"), NodePath("../Player")]
+y_sort_root = [NodePath("../InteractableItems"), NodePath("../NonInteractbableObjects"), NodePath("../Player"), NodePath("../Player2")]
 
 [node name="SpawnStart" parent="." instance=ExtResource("11_122io")]
 position = Vector2(931, 198)
@@ -174,12 +181,21 @@ offset_bottom = 59.0
 grow_horizontal = 0
 script = ExtResource("21_aq4aw")
 
-[node name="ApartmentProphet" type="Node2D" parent="." node_paths=PackedStringArray("ballNode")]
+[node name="ApartmentProphet" type="Node2D" parent="." node_paths=PackedStringArray("ball_node", "controller_orchestrator")]
 script = ExtResource("21_i8xe5")
-ballNode = NodePath("../InteractableItems/Ball")
+ball_node = NodePath("../InteractableItems/Ball")
+controller_orchestrator = NodePath("../ControllerOrchestrator")
+
+[node name="ControllerOrchestrator" type="Node" parent="." node_paths=PackedStringArray("controllers")]
+script = ExtResource("23_3wfrb")
+controllers = [NodePath("../Player/ControllerComponent"), NodePath("../Player2/ControllerComponent")]
 
 [connection signal="cheat_activated" from="CheatManager" to="ApartmentProphet" method="_on_cheat_manager_cheat_activated"]
 [connection signal="cheat_state_changed" from="CheatManager" to="CheatManager/CanvasLayer/ColorRect" method="_on_cheat_manager_cheat_state_changed"]
 
 [editable path="InteractableItems/Ball"]
 [editable path="InteractableItems/Ball/Item"]
+[editable path="Player"]
+[editable path="Player/Item"]
+[editable path="Player2"]
+[editable path="Player2/Item"]

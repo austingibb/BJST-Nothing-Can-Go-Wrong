@@ -36,7 +36,7 @@ var submit_key: Key = KEY_ENTER
 func _ready() -> void:
 	load_config()
 	get_tree().connect("tree_changed", Callable(self, "_on_tree_changed"))
-	print("CheatManager ready.")
+#	print("CheatManager ready.")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -77,23 +77,23 @@ func transition_fn(event: InputEvent, event_type: CheatManager.EventType, state:
 	var new_state: CheatInputState = state
 	var new_sequence: String = sequence
 
-	print("Transition function called with:")
-	print("  Event Type:", event_type)
-	print("  Current State:", state)
-	print("  Current Sequence:", sequence)
+#	print("Transition function called with:")
+#	print("  Event Type:", event_type)
+#	print("  Current State:", state)
+#	print("  Current Sequence:", sequence)
 
 	if event_type == EventType.MODIFIER_PRESS:
-		print("  -> Modifier key pressed")
+#		print("  -> Modifier key pressed")
 		if state == CheatInputState.HIDDEN:
-			print("  -> Transitioning to VALID_PREFIX state")
+#			print("  -> Transitioning to VALID_PREFIX state")
 			new_state = CheatInputState.VALID_PREFIX
 			new_sequence = ""
 	elif event_type == EventType.ARROW:
 		var arrow: String = _arrow_from_event(event)
 		if arrow != "":
-			print("  -> Arrow key pressed:", arrow)
+#			print("  -> Arrow key pressed:", arrow)
 			new_sequence += arrow
-			print("  -> Updated sequence:", new_sequence)
+#			print("  -> Updated sequence:", new_sequence)
 			# Determine new state by comparing new_sequence against config.
 			var has_exact: bool = false
 			var has_extension: bool = false
@@ -104,29 +104,29 @@ func transition_fn(event: InputEvent, event_type: CheatManager.EventType, state:
 				elif cheat_seq.begins_with(new_sequence):
 					has_extension = true
 			
-			print("  -> Cheat sequence analysis:")
-			print("     Exact match found:", has_exact)
-			print("     Possible extension:", has_extension)
+#			print("  -> Cheat sequence analysis:")
+#			print("     Exact match found:", has_exact)
+#			print("     Possible extension:", has_extension)
 
 			if has_exact:
 				if has_extension:
-					print("  -> Sequence is an exact match but also has valid candidates for continued input, transitioning to EXACT_AMBIGUOUS")
+#					print("  -> Sequence is an exact match but also has valid candidates for continued input, transitioning to EXACT_AMBIGUOUS")
 					new_state = CheatInputState.EXACT_AMBIGUOUS
 				else:
-					print("  -> Sequence is an exact match with no candidates for continued input, transitioning to EXACT_UNAMBIGUOUS")
+#					print("  -> Sequence is an exact match with no candidates for continued input, transitioning to EXACT_UNAMBIGUOUS")
 					new_state = CheatInputState.EXACT_UNAMBIGUOUS
 			elif has_extension:
 				new_state = CheatInputState.VALID_PREFIX
-				print("  -> Sequence is a valid prefix of a longer cheat code, staying in VALID_PREFIX state")
+#				print("  -> Sequence is a valid prefix of a longer cheat code, staying in VALID_PREFIX state")
 			else:
 				new_state = CheatInputState.INVALID
-				print("  -> Sequence does not match any configured cheat codes, transitioning to INVALID state")
+#				print("  -> Sequence does not match any configured cheat codes, transitioning to INVALID state")
 	elif event_type == EventType.SUBMIT:
-		print("  -> Submit key pressed, executing cheat (if valid)")
+#		print("  -> Submit key pressed, executing cheat (if valid)")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
 	elif event_type == EventType.MODIFIER_RELEASE:
-		print("  -> Reset event, clearing sequence and returning to hidden")
+#		print("  -> Reset event, clearing sequence and returning to hidden")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
 	return { "state": new_state, "sequence": new_sequence }
@@ -148,16 +148,18 @@ func _load_config_fn() -> Dictionary:
 			"change-ball-color": null,
 			"change-ball-color-red": null,
 			"save-game": null,
-			"open-secret-door": null
+			"open-secret-door": null,
+			"switch-active-char": null
 		},
 		"cheats": {
 			"←↑→↓": "change-ball-color",
 			"←↑→↓→": "change-ball-color-red",
 			"←↑↑": "save-game",
-			"↑→↑": "open-secret-door"
+			"↑→↑": "open-secret-door",
+			"↑↑↑": "switch-active-char"
 		}
 	}
-	print("Cheat configuration loaded.")
+#	print("Cheat configuration loaded.")
 	return config
 
 func _arrow_from_event(event: InputEventKey) -> String:
