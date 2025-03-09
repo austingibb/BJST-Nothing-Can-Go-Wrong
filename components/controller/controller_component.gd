@@ -1,26 +1,27 @@
 extends Node
+
+# abstract class
 class_name ControllerComponent
 
 @export var speed: float = 300
-@export var packed_scene: PackedScene
-@export var animation_handler: AnimationHandler
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# Handle player movement
-	if Dialogic.current_timeline == null:
-		var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
-		if animation_handler:
-			animation_handler.handle_animation(input_direction)
-		else:
-			push_warning("No Animation Handler assigned!")
-		owner.velocity = input_direction * speed
-		owner.move_and_slide()
+# managed by controller orchestrator
+var _is_active_controller: bool = true
 
-# this is the relevant code for handling opening the next level proof of concept
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_menu"):  # Default "ESC" action in Godot
-		toggle_menu()
-	
-func toggle_menu() -> void:
-	LevelManager.toggle_menu()
+func _get_input_dir() -> Vector2:
+	var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
+	return input_direction
+
+func _apply_velocity(input_dir: Vector2) -> void:
+	if not owner is CharacterBody2D:
+		return
+
+	var char_body_2D : CharacterBody2D = owner as CharacterBody2D
+	char_body_2D.velocity = input_dir * speed
+	char_body_2D.move_and_slide()
+
+func activate() -> void:
+	_is_active_controller = true
+
+func deactivate() -> void:
+	_is_active_controller = false
