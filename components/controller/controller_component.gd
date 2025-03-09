@@ -6,7 +6,7 @@ class_name ControllerComponent
 @export var speed: float = 300
 
 # managed by controller orchestrator
-var _is_active_controller: bool = true
+var _is_active_controller: bool = false
 
 func _get_input_dir() -> Vector2:
 	var input_direction: Vector2 = Input.get_vector("left", "right", "forward", "backward")
