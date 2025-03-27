@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccb4l276i2dhy"]
 
 [ext_resource type="Texture2D" uid="uid://cvpbd8f6nhmi2" path="res://assets/Fridge.png" id="1_3uc3r"]
-[ext_resource type="Script" path="res://scripts/items/fridge.gd" id="1_g0b8d"]
-[ext_resource type="Script" path="res://components/interactable/interactable_component.gd" id="2_u632x"]
+[ext_resource type="Script" uid="uid://de6m13m0hbita" path="res://scripts/items/fridge.gd" id="1_g0b8d"]
+[ext_resource type="Script" uid="uid://cehst5p1fd1vc" path="res://components/interactable/interactable_component.gd" id="2_u632x"]
 [ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="3_t2lvk"]
-[ext_resource type="Script" path="res://components/items/item_meta_data.gd" id="4_nu6vf"]
+[ext_resource type="Script" uid="uid://kc4xotnceu28" path="res://components/items/item_meta_data.gd" id="4_nu6vf"]
 
 [node name="Fridge" type="Node2D"]
 script = ExtResource("1_g0b8d")

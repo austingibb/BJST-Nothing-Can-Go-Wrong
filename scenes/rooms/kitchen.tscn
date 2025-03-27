@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://cn1c3dqe7r478"]
 
 [ext_resource type="Texture2D" uid="uid://b1ktl267wty8c" path="res://assets/backgrounds/Kitchen_ back.png" id="1_d7kag"]
-[ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_s8dfr"]
-[ext_resource type="Script" path="res://scripts/rooms/kitchen.gd" id="1_stb55"]
+[ext_resource type="Shader" uid="uid://ruj2unxgpwb0" path="res://shaders/ripples.gdshader" id="1_s8dfr"]
+[ext_resource type="Script" uid="uid://kyb1a1ebjl88" path="res://scripts/rooms/kitchen.gd" id="1_stb55"]
 [ext_resource type="Texture2D" uid="uid://diqlrbksym285" path="res://assets/backgrounds/Kitchen_ front.png" id="2_h8awg"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="2_jpyse"]
 [ext_resource type="Texture2D" uid="uid://c02iglb5nke2t" path="res://assets/backgrounds/Kitchen_floor.png" id="3_kxcpx"]
@@ -132,10 +132,11 @@ position = Vector2(628, 144)
 z_index = 2
 position = Vector2(850, 395)
 scale = Vector2(0.9, 0.9)
+destination_room = 5
 destination_spawn_point = "SpawnKitchenDoor"
 
 [node name="Player" parent="." instance=ExtResource("8_b6kpr")]
-position = Vector2(740, 286)
+position = Vector2(498, 161)
 
 [node name="SpawnApartmentDoor" parent="." instance=ExtResource("10_wj8cn")]
 position = Vector2(731, 374)

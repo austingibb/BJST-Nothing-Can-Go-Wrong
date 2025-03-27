@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgnaexi5joqm6"]
+
+[ext_resource type="Script" uid="uid://hdw5066jcepw" path="res://scenes/scene_manager/scene_manager.gd" id="1_do3pq"]
+[ext_resource type="PackedScene" uid="uid://351sqt5uyhue" path="res://scenes/transition_manager/transition_manager.tscn" id="2_hclo4"]
+[ext_resource type="PackedScene" uid="uid://b2bx2gdyg5o7c" path="res://scenes/music_manager/music_manager.tscn" id="2_yr2f4"]
+
+[node name="SceneManager" type="Node" node_paths=PackedStringArray("world2d", "gui", "transition_manager")]
+script = ExtResource("1_do3pq")
+world2d = NodePath("World2D")
+gui = NodePath("GUI")
+transition_manager = NodePath("TransitionManager")
+
+[node name="MusicManager" parent="." instance=ExtResource("2_yr2f4")]
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="GUI" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="TransitionManager" parent="." instance=ExtResource("2_hclo4")]
+process_mode = 3
+mouse_filter = 2

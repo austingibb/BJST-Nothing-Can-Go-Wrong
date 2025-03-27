@@ -537,8 +537,7 @@ animation = &"S"
 [node name="AnimationHandlerComponent" parent="." node_paths=PackedStringArray("animated_sprite2d") instance=ExtResource("11_jej6c")]
 animated_sprite2d = NodePath("../AnimatedSprite2D")
 
-[node name="ControllerComponent" parent="." node_paths=PackedStringArray("animation_handler") instance=ExtResource("1_aha6j")]
-animation_handler = NodePath("../AnimationHandlerComponent")
+[node name="ControllerComponent" parent="." instance=ExtResource("1_aha6j")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 101)

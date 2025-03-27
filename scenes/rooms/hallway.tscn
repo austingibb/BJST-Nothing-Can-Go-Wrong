@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://b72kw8fbsbcan"]
 
-[ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_a56r2"]
+[ext_resource type="Shader" uid="uid://ruj2unxgpwb0" path="res://shaders/ripples.gdshader" id="1_a56r2"]
 [ext_resource type="Texture2D" uid="uid://5cd68k2381uj" path="res://assets/backgrounds/Hall_floor.png" id="1_um01q"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="2_pf6h0"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_mydxo"]
@@ -91,12 +91,13 @@ position = Vector2(127, 627)
 
 [node name="Door" parent="InteractableItems" instance=ExtResource("4_rtl2c")]
 position = Vector2(592, 63)
+destination_room = 5
 destination_spawn_point = "SpawnHallwayDoor"
 
 [node name="MainDoor" parent="InteractableItems" instance=ExtResource("7_g4xmd")]
 z_index = 1
 position = Vector2(14, 663)
-destination_room = 3
+destination_room = 8
 destination_spawn_point = "N/A"
 
 [node name="Player" parent="." instance=ExtResource("5_2owul")]

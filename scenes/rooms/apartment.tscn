@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
 [ext_resource type="Texture2D" uid="uid://e1jd07a3xn05" path="res://assets/backgrounds/room_floor.png" id="1_frdl4"]
-[ext_resource type="Shader" path="res://shaders/ripples.gdshader" id="1_ih8q5"]
-[ext_resource type="Script" path="res://scripts/apartment.gd" id="1_udb5f"]
+[ext_resource type="Shader" uid="uid://ruj2unxgpwb0" path="res://shaders/ripples.gdshader" id="1_ih8q5"]
+[ext_resource type="Script" uid="uid://0mihm7ya7sco" path="res://scripts/apartment.gd" id="1_udb5f"]
 [ext_resource type="Texture2D" uid="uid://bhqed1l3o6k3e" path="res://assets/backgrounds/room_wall1.png" id="2_0mfw8"]
 [ext_resource type="Texture2D" uid="uid://ch5dtewaq6nkl" path="res://assets/backgrounds/backwall_room.png" id="3_evmdf"]
 [ext_resource type="PackedScene" uid="uid://ccx3p7phd2qb2" path="res://scenes/Items/ball.tscn" id="4_1ohl8"]
 [ext_resource type="PackedScene" uid="uid://b5a60wk0y08ww" path="res://components/see_through_component/see_through_component.tscn" id="4_j0ya2"]
 [ext_resource type="PackedScene" uid="uid://rlg3fvmpq5ip" path="res://scenes/Items/motivation.tscn" id="4_pmqfa"]
-[ext_resource type="Script" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
+[ext_resource type="Script" uid="uid://c6rqbsvs8fiov" path="res://scripts/items/y_sort_daemon.gd" id="5_mmfak"]
 [ext_resource type="PackedScene" uid="uid://bjta7ifyqvo6h" path="res://scenes/Items/door.tscn" id="7_3u05v"]
 [ext_resource type="PackedScene" uid="uid://bifsn2v6kivk6" path="res://scenes/Items/non_interactable/night_stand.tscn" id="10_c4eci"]
 [ext_resource type="PackedScene" uid="uid://cc2wlfoad2h3l" path="res://scenes/spawn_point.tscn" id="11_122io"]
@@ -19,9 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://c0n5350pphtjc" path="res://scenes/Items/non_interactable/hall_table.tscn" id="13_g8iod"]
 [ext_resource type="Texture2D" uid="uid://bnq1dfmrfts7" path="res://assets/Portrait.png" id="13_h7gq1"]
 [ext_resource type="Texture2D" uid="uid://cejb6aabg3n3g" path="res://assets/Untitled2_20250223114326.png" id="14_wo1vi"]
-[ext_resource type="Script" path="res://scripts/cheat-manager/cheat_manager.gd" id="20_1c652"]
-[ext_resource type="Script" path="res://scripts/cheat-manager/indicator_light.gd" id="21_aq4aw"]
-[ext_resource type="Script" path="res://scripts/god-prophet/apartment_prophet.gd" id="21_i8xe5"]
+[ext_resource type="Script" uid="uid://d0nmsh70wkmbs" path="res://scripts/cheat-manager/cheat_manager.gd" id="20_1c652"]
+[ext_resource type="Script" uid="uid://xggmkwv2rfbf" path="res://scripts/cheat-manager/indicator_light.gd" id="21_aq4aw"]
+[ext_resource type="Script" uid="uid://8hfnomdsgpql" path="res://scripts/god-prophet/apartment_prophet.gd" id="21_i8xe5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
 shader = ExtResource("1_ih8q5")
@@ -30,7 +30,6 @@ shader = ExtResource("1_ih8q5")
 size = Vector2(1306.46, 46)
 
 [node name="Apartment" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_udb5f")
 
 [node name="Backdrop" type="Sprite2D" parent="."]
@@ -125,14 +124,14 @@ scale = Vector2(0.3, 0.291)
 [node name="Door" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = 101
 position = Vector2(1314, 490)
-destination_room = 1
+destination_room = 7
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Door1" parent="InteractableItems" instance=ExtResource("7_3u05v")]
 z_index = -1
 position = Vector2(-41, 90)
 scale = Vector2(0.9, 0.9)
-destination_room = 2
+destination_room = 6
 destination_spawn_point = "SpawnApartmentDoor"
 
 [node name="Player" parent="." instance=ExtResource("1_84olp")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2bx2gdyg5o7c"]
+
+[ext_resource type="Script" uid="uid://phr516y0xyme" path="res://scenes/music_manager/music_manager.gd" id="1_r1srg"]
+
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("music_player")]
+script = ExtResource("1_r1srg")
+music_player = NodePath("MusicStreamPlayer")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+bus = &"Music"

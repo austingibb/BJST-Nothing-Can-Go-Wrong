@@ -1,0 +1,98 @@
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cyst5nhklxtvu"]
+
+[ext_resource type="Texture2D" uid="uid://xeefvhpdv0aj" path="res://assets/ui/gray/button_rectangle_depth_flat.svg" id="1_gkhbr"]
+[ext_resource type="Texture2D" uid="uid://b2wqanjho8luv" path="res://assets/ui/gray/button_rectangle_depth_gloss.svg" id="2_egj6q"]
+[ext_resource type="Texture2D" uid="uid://dnopf7gpg7lxi" path="res://assets/ui/gray/button_rectangle_flat.svg" id="2_n16i7"]
+[ext_resource type="Texture2D" uid="uid://opqubu6bo1ht" path="res://assets/ui/yellow/button_square_depth_border.svg" id="3_n16i7"]
+[ext_resource type="Texture2D" uid="uid://cebbfh4dlbmex" path="res://assets/ui/gray/button_square_depth_flat.svg" id="4_bbgtq"]
+[ext_resource type="Texture2D" uid="uid://bcsspn4iu6bw2" path="res://assets/ui/yellow/button_rectangle_depth_flat.svg" id="4_n16i7"]
+[ext_resource type="Texture2D" uid="uid://c22dgbygrupak" path="res://assets/ui/gray/slide_horizontal_grey.svg" id="5_8jrip"]
+[ext_resource type="Texture2D" uid="uid://bhsyfkou26q3y" path="res://assets/ui/yellow/button_rectangle_depth_gloss.svg" id="5_egj6q"]
+[ext_resource type="Texture2D" uid="uid://b3qvv8232y86g" path="res://assets/ui/yellow/slide_hangle.svg" id="5_n12nr"]
+[ext_resource type="Texture2D" uid="uid://davl71w6k4luc" path="res://assets/ui/yellow/button_rectangle_flat.svg" id="6_8jrip"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_egj6q"]
+texture = ExtResource("1_gkhbr")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jrip"]
+texture = ExtResource("2_egj6q")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bbgtq"]
+texture = ExtResource("2_n16i7")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gkhbr"]
+texture = ExtResource("4_bbgtq")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n12nr"]
+texture = ExtResource("5_8jrip")
+texture_margin_left = 30.0
+texture_margin_right = 30.0
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 96, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j84ws"]
+texture = ExtResource("4_n16i7")
+texture_margin_top = 15.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtax7"]
+texture = ExtResource("5_egj6q")
+texture_margin_top = 15.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxqug"]
+texture = ExtResource("6_8jrip")
+texture_margin_top = 15.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwvfb"]
+texture = ExtResource("3_n16i7")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 10.0
+
+[resource]
+GrayButton/base_type = &"Button"
+GrayButton/colors/font_color = Color(0.35, 0.35, 0.35, 1)
+GrayButton/colors/font_focus_color = Color(0.34902, 0.34902, 0.34902, 1)
+GrayButton/colors/font_hover_color = Color(0.34902, 0.34902, 0.34902, 1)
+GrayButton/colors/font_pressed_color = Color(0.34902, 0.34902, 0.34902, 1)
+GrayButton/styles/hover = SubResource("StyleBoxTexture_egj6q")
+GrayButton/styles/normal = SubResource("StyleBoxTexture_8jrip")
+GrayButton/styles/pressed = SubResource("StyleBoxTexture_bbgtq")
+GrayLabel/base_type = &"Label"
+GrayLabel/colors/font_color = Color(0.321569, 0.321569, 0.321569, 1)
+GrayPanel/base_type = &"PanelContainer"
+GrayPanel/styles/panel = SubResource("StyleBoxTexture_gkhbr")
+HSlider/icons/grabber = ExtResource("5_n12nr")
+HSlider/icons/grabber_highlight = ExtResource("5_n12nr")
+HSlider/styles/slider = SubResource("StyleBoxTexture_n12nr")
+YellowButton/base_type = &"Button"
+YellowButton/colors/font_color = Color(0.84, 0.546, 0, 1)
+YellowButton/colors/font_focus_color = Color(0.839216, 0.545098, 0, 1)
+YellowButton/colors/font_hover_color = Color(0.839216, 0.545098, 0, 1)
+YellowButton/colors/font_pressed_color = Color(0.839216, 0.545098, 0, 1)
+YellowButton/font_sizes/font_size = 20
+YellowButton/styles/hover = SubResource("StyleBoxTexture_j84ws")
+YellowButton/styles/normal = SubResource("StyleBoxTexture_rtax7")
+YellowButton/styles/pressed = SubResource("StyleBoxTexture_sxqug")
+YellowPanel/base_type = &"PanelContainer"
+YellowPanel/styles/panel = SubResource("StyleBoxTexture_mwvfb")

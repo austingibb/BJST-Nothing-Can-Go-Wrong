@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjta7ifyqvo6h"]
 
 [ext_resource type="Texture2D" uid="uid://cyneagg6gqolb" path="res://assets/door.png" id="1_0xr6b"]
-[ext_resource type="Script" path="res://scripts/items/door.gd" id="1_pl4qv"]
-[ext_resource type="Script" path="res://components/interactable/interactable_component.gd" id="3_aii1r"]
-[ext_resource type="Script" path="res://components/highlight_component/highlight_component.gd" id="4_grxnr"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="5_4c3ec"]
+[ext_resource type="Script" uid="uid://ba3aeprkobxea" path="res://scripts/items/door.gd" id="1_pl4qv"]
+[ext_resource type="Script" uid="uid://cehst5p1fd1vc" path="res://components/interactable/interactable_component.gd" id="3_aii1r"]
+[ext_resource type="Script" uid="uid://c4s3t8dgteotb" path="res://components/highlight_component/highlight_component.gd" id="4_grxnr"]
+[ext_resource type="Shader" uid="uid://c3yon6xsbo83n" path="res://shaders/outline.gdshader" id="5_4c3ec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ledqc"]
 shader = ExtResource("5_4c3ec")
