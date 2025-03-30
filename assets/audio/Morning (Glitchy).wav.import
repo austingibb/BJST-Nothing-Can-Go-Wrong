@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cunxthr6sd1mo"
+path="res://.godot/imported/Morning (Glitchy).wav-3f084ac9ae8e56edd70e45d801fdf7ef.sample"
+
+[deps]
+
+source_file="res://assets/audio/Morning (Glitchy).wav"
+dest_files=["res://.godot/imported/Morning (Glitchy).wav-3f084ac9ae8e56edd70e45d801fdf7ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

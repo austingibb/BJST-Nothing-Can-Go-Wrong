@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ngwwkbo1h8nv"
+path="res://.godot/imported/Morning (Scary).wav-8e392a7b0b377117e4680e916eb4391a.sample"
+
+[deps]
+
+source_file="res://assets/audio/Morning (Scary).wav"
+dest_files=["res://.godot/imported/Morning (Scary).wav-8e392a7b0b377117e4680e916eb4391a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
