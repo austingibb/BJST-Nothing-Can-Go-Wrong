@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct27gt4n8re5u"
+path="res://.godot/imported/Good Ending.ogg-e3b2cab9369162b9845cdff86f59376e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Good Ending.ogg"
+dest_files=["res://.godot/imported/Good Ending.ogg-e3b2cab9369162b9845cdff86f59376e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

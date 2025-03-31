@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dho1w507pw2gq"
+path="res://.godot/imported/Morning (Scary).ogg-c46628b4dee28fd0a2a70961033ac8ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Morning (Scary).ogg"
+dest_files=["res://.godot/imported/Morning (Scary).ogg-c46628b4dee28fd0a2a70961033ac8ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

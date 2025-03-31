@@ -6,17 +6,17 @@ class_name MusicManager
 # 2. create a enum for that file in GlobalEnum.AudioName
 # 3. handle that enum in play 
 
-var menu_music : AudioStream = preload("res://assets/audio/menu.wav")
-var morning_normal: AudioStream = preload("res://assets/audio/Morning (Normal).wav")
+var menu_music : AudioStream = preload("res://assets/audio/menu.ogg")
+var morning_normal: AudioStream = preload("res://assets/audio/Morning (Normal).ogg")
 var morning_glitchy: AudioStream = preload("res://assets/audio/Morning (Glitchy).wav")
-var morning_scary : AudioStream = preload("res://assets/audio/Morning (Scary).wav")
-var morning_scary2 : AudioStream = preload("res://assets/audio/Morning (scary) ver2.wav")
+var morning_scary : AudioStream = preload("res://assets/audio/Morning (Scary).ogg")
+var morning_scary2 : AudioStream = preload("res://assets/audio/Morning (Scary) V2.ogg")
 
-var bad_ending : AudioStream = preload("res://assets/audio/Bad Ending.wav")
-var chaotic_confrontation : AudioStream = preload("res://assets/audio/Chaotic Confrontation.wav")
-var computer_minigame : AudioStream = preload("res://assets/audio/Computer Minigame.wav")
+var bad_ending : AudioStream = preload("res://assets/audio/Bad Ending.ogg")
+var chaotic_confrontation : AudioStream = preload("res://assets/audio/Chaotic Confrontation.ogg")
+var computer_minigame : AudioStream = preload("res://assets/audio/Computer Minigame.ogg")
 var factory_music : AudioStream = preload("res://assets/audio/Factory.wav")
-var good_ending : AudioStream = preload("res://assets/audio/Good Ending.wav")
+var good_ending : AudioStream = preload("res://assets/audio/Good Ending.ogg")
 var never_give_up : AudioStream = preload("res://assets/audio/never_give_up.wav")
 
 @export var music_player: AudioStreamPlayer
