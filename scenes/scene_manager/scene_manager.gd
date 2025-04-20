@@ -4,6 +4,7 @@ class_name SceneManager
 @export var world2d: Node2D
 @export var gui: Control
 @export var transition_manager: TransitionManager
+@export var enable_splash_screen: bool = true # Flag to enable/disable splash screen
 
 var curr_2d_scene: Node2D
 var curr_gui_scene: Control
@@ -26,12 +27,21 @@ const splash_screen_manager: String = "res://scenes/splash_screen_manager/splash
 
 func _ready() -> void:
 	Global.scene_manager = self
-	change_gui_scene(
-		GlobalEnums.SceneName.SplashScreen,
-		true,
-		false,
-		false,
-	)
+	if enable_splash_screen:
+		change_gui_scene(
+			GlobalEnums.SceneName.SplashScreen,
+			true,
+			false,
+			false,
+		)
+	else:
+		# Optionally load the main menu directly if splash screen is disabled
+		change_gui_scene(
+			GlobalEnums.SceneName.MainMenu,
+			true,
+			false,
+			false,
+		)
 
 # a pause menu
 func _input(_event: InputEvent) -> void:
@@ -90,7 +100,7 @@ func reset_2d_scene(
 	transition: bool = true,
 	transition_in: String = "fade_in",
 	transition_out: String = "fade_out",
-	seconds: float = 1.0
+	seconds: float = 0.5 # Reduced default transition time
 ) -> void:
 	if transition:
 		transition_manager.transition(transition_out, seconds)
@@ -121,7 +131,7 @@ func change_2d_scene(
 	transition: bool = true,
 	transition_in: String = "fade_in",
 	transition_out: String = "fade_out",
-	seconds: float = 1.0
+	seconds: float = 0.5 # Reduced default transition time
 ) -> void:
 	curr_2d_scene_name = scene_name
 	if transition:
@@ -147,7 +157,7 @@ func change_gui_scene(
 	transition: bool = true,
 	transition_in: String = "fade_in",
 	transition_out: String = "fade_out",
-	seconds: float = 1.0
+	seconds: float = 0.5 # Reduced default transition time
 ) -> void:
 	curr_gui_scene_name = scene_name
 	if transition:
@@ -174,7 +184,7 @@ func load_room(
 	transition: bool = true,
 	transition_in: String = "fade_in",
 	transition_out: String = "fade_out",
-	seconds: float = 1.0
+	seconds: float = 0.5 # Reduced default transition time
 ) -> void:
 	await Global.scene_manager.change_2d_scene(
 		scene_name,
@@ -191,8 +201,8 @@ func load_room(
 		print("Spawning without spawn point.")
 	elif current_scene.has_node(spawn_string):
 		print(spawn_string)
-		var spawn_point: Node = current_scene.get_node(spawn_string)
-		print(spawn_point)
-		var spawn_position: Vector2 = spawn_point.global_position
+		var _spawn_point: Node = current_scene.get_node(spawn_string) # Prefixed with underscore
+		print(_spawn_point)
+		var spawn_position: Vector2 = _spawn_point.global_position
 		var player : CharacterBody2D = current_scene.get_node("Player")
 		player.global_position = spawn_position

@@ -9,6 +9,7 @@ script = ExtResource("1_do3pq")
 world2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_manager = NodePath("TransitionManager")
+enable_splash_screen = false
 
 [node name="MusicManager" parent="." instance=ExtResource("2_yr2f4")]
 
