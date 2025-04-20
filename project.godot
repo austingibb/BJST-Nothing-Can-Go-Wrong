@@ -54,13 +54,14 @@ project/assembly_name="Brackey-s Jam Super Team - Nothing Can Go Wrong"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [global_group]
 
 Player="group for only and only player"
 item_owner=""
 y_sort_marker="Used to indicate a Marker2D is meant to be used as position for y sorting."
+ignore_y_sort=""
 
 [input]
 

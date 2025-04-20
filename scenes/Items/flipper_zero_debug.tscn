@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://blyhhsgjw6vbi"]
+
+[ext_resource type="Script" uid="uid://boc6mx1myeuck" path="res://scripts/items/flipper_zero_debug.gd" id="1_tnstn"]
+[ext_resource type="PackedScene" uid="uid://cvldi6rp65ybw" path="res://components/highlight_component/highlight_component.tscn" id="1_w2gja"]
+[ext_resource type="Texture2D" uid="uid://dxx0irquqhc60" path="res://assets/sprites/debug/flipper-zero-off.png" id="2_5rg16"]
+[ext_resource type="PackedScene" uid="uid://cyor726jo7tfe" path="res://components/interactable/interactable_component.tscn" id="2_q6jxs"]
+[ext_resource type="Texture2D" uid="uid://gtw2rrv58v7p" path="res://assets/sprites/debug/flipper-zero-on-display-only.png" id="3_tnstn"]
+[ext_resource type="PackedScene" uid="uid://cfwkdl35ymv3a" path="res://scenes/Items/item_component_with_ysort_marker.tscn" id="4_5rg16"]
+
+[node name="FlipperZeroDebug" type="Node2D" node_paths=PackedStringArray("on_screen") groups=["item_owner"]]
+script = ExtResource("1_tnstn")
+on_screen = NodePath("FlipperZeroOn")
+
+[node name="InteractableComponent" parent="." node_paths=PackedStringArray("highlighted_component") instance=ExtResource("2_q6jxs")]
+highlighted_component = NodePath("../HighlightComponent")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractableComponent"]
+polygon = PackedVector2Array(563, -116, 796, -138, 1004, -24, 1056, 49, 447, 847, 154, 878, 19, 499)
+
+[node name="HighlightComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_w2gja")]
+sprite = NodePath("../FlipperZeroOff")
+
+[node name="FlipperZeroOff" type="Sprite2D" parent="."]
+position = Vector2(536, 381)
+texture = ExtResource("2_5rg16")
+
+[node name="FlipperZeroOn" type="Sprite2D" parent="."]
+position = Vector2(532, 384)
+scale = Vector2(0.724078, 0.724078)
+texture = ExtResource("3_tnstn")
+
+[node name="Item" parent="." groups=["ignore_y_sort"] instance=ExtResource("4_5rg16")]
+
+[node name="YSortMarker2D" parent="Item" index="0" groups=["y_sort_marker"]]
+position = Vector2(342, 853)
+
+[connection signal="interacted" from="InteractableComponent" to="." method="_on_interactable_component_interacted"]
+
+[editable path="Item"]

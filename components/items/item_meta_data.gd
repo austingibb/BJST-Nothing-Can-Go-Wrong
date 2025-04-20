@@ -1,11 +1,6 @@
 extends Node
 class_name BjstItem
 
-# Exported flags for item aspects.
-# Example flags: "ySort", "madeOfWood", "isCute", "isNostalgic". 
-# Feel free to expand this to your needs for how you want to categorize in-world items.
-@export_flags("ySort", "madeOfWood", "isCute", "isNostalgic") var item_aspects: int = 0
-
 func _ready() -> void:
 	# continually search through parents until a node in "owner" group is found
 	var item_owner_parent : Node = self

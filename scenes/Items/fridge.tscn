@@ -26,7 +26,6 @@ sprite = NodePath("../Sprite2D")
 
 [node name="Item" type="Node" parent="."]
 script = ExtResource("4_nu6vf")
-item_aspects = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

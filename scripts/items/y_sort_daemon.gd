@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 			to_visit.append(child_node)
 
 		# If this node is an Item
-		if current_node is BjstItem:
+		if current_node is BjstItem and GlobalConstants.GetGroupName(GlobalConstants.GlobalGroup.IGNORE_Y_SORT) not in current_node.get_groups():
 			_y_sort_item(current_node)
 
 #

@@ -36,7 +36,7 @@ var submit_key: Key = KEY_ENTER
 func _ready() -> void:
 	load_config()
 	get_tree().connect("tree_changed", Callable(self, "_on_tree_changed"))
-	print("CheatManager ready.")
+	Global.log_debug("CheatManager ready.")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -77,23 +77,23 @@ func transition_fn(event: InputEvent, event_type: CheatManager.EventType, state:
 	var new_state: CheatInputState = state
 	var new_sequence: String = sequence
 
-	print("Transition function called with:")
-	print("  Event Type:", event_type)
-	print("  Current State:", state)
-	print("  Current Sequence:", sequence)
+	Global.log_debug("Transition function called with:")
+	Global.log_debug("  Event Type: " + str(event_type))
+	Global.log_debug("  Current State: " + str(state))
+	Global.log_debug("  Current Sequence: " + sequence)
 
 	if event_type == EventType.MODIFIER_PRESS:
-		print("  -> Modifier key pressed")
+		Global.log_debug("  -> Modifier key pressed")
 		if state == CheatInputState.HIDDEN:
-			print("  -> Transitioning to VALID_PREFIX state")
+			Global.log_debug("  -> Transitioning to VALID_PREFIX state")
 			new_state = CheatInputState.VALID_PREFIX
 			new_sequence = ""
 	elif event_type == EventType.ARROW:
 		var arrow: String = _arrow_from_event(event)
 		if arrow != "":
-			print("  -> Arrow key pressed:", arrow)
+			Global.log_debug("  -> Arrow key pressed: " + arrow)
 			new_sequence += arrow
-			print("  -> Updated sequence:", new_sequence)
+			Global.log_debug("  -> Updated sequence: " + new_sequence)
 			# Determine new state by comparing new_sequence against config.
 			var has_exact: bool = false
 			var has_extension: bool = false
@@ -104,29 +104,29 @@ func transition_fn(event: InputEvent, event_type: CheatManager.EventType, state:
 				elif cheat_seq.begins_with(new_sequence):
 					has_extension = true
 			
-			print("  -> Cheat sequence analysis:")
-			print("     Exact match found:", has_exact)
-			print("     Possible extension:", has_extension)
+			Global.log_debug("  -> Cheat sequence analysis:")
+			Global.log_debug("     Exact match found: " + str(has_exact))
+			Global.log_debug("     Possible extension: " + str(has_extension))
 
 			if has_exact:
 				if has_extension:
-					print("  -> Sequence is an exact match but also has valid candidates for continued input, transitioning to EXACT_AMBIGUOUS")
+					Global.log_debug("  -> Sequence is an exact match but also has valid candidates for continued input, transitioning to EXACT_AMBIGUOUS")
 					new_state = CheatInputState.EXACT_AMBIGUOUS
 				else:
-					print("  -> Sequence is an exact match with no candidates for continued input, transitioning to EXACT_UNAMBIGUOUS")
+					Global.log_debug("  -> Sequence is an exact match with no candidates for continued input, transitioning to EXACT_UNAMBIGUOUS")
 					new_state = CheatInputState.EXACT_UNAMBIGUOUS
 			elif has_extension:
 				new_state = CheatInputState.VALID_PREFIX
-				print("  -> Sequence is a valid prefix of a longer cheat code, staying in VALID_PREFIX state")
+				Global.log_debug("  -> Sequence is a valid prefix of a longer cheat code, staying in VALID_PREFIX state")
 			else:
 				new_state = CheatInputState.INVALID
-				print("  -> Sequence does not match any configured cheat codes, transitioning to INVALID state")
+				Global.log_debug("  -> Sequence does not match any configured cheat codes, transitioning to INVALID state")
 	elif event_type == EventType.SUBMIT:
-		print("  -> Submit key pressed, executing cheat (if valid)")
+		Global.log_debug("  -> Submit key pressed, executing cheat (if valid)")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
 	elif event_type == EventType.MODIFIER_RELEASE:
-		print("  -> Reset event, clearing sequence and returning to hidden")
+		Global.log_debug("  -> Reset event, clearing sequence and returning to hidden")
 		new_state = CheatInputState.HIDDEN
 		new_sequence = ""
 	return { "state": new_state, "sequence": new_sequence }
@@ -157,7 +157,7 @@ func _load_config_fn() -> Dictionary:
 			"↑→↑": "open-secret-door"
 		}
 	}
-	print("Cheat configuration loaded.")
+	Global.log_debug("Cheat configuration loaded.")
 	return config
 
 func _arrow_from_event(event: InputEventKey) -> String:

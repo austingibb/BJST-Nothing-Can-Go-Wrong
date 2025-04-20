@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i1quic2io8g6"]
+[gd_scene load_steps=26 format=3 uid="uid://i1quic2io8g6"]
 
 [ext_resource type="PackedScene" uid="uid://dm2rkj7a7abmx" path="res://scenes/player.tscn" id="1_84olp"]
 [ext_resource type="Texture2D" uid="uid://cde8628garqoi" path="res://assets/backgrounds/backdrop.jpeg" id="1_ebjrb"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://d0nmsh70wkmbs" path="res://scripts/cheat-manager/cheat_manager.gd" id="20_1c652"]
 [ext_resource type="Script" uid="uid://xggmkwv2rfbf" path="res://scripts/cheat-manager/indicator_light.gd" id="21_aq4aw"]
 [ext_resource type="Script" uid="uid://8hfnomdsgpql" path="res://scripts/god-prophet/apartment_prophet.gd" id="21_i8xe5"]
+[ext_resource type="PackedScene" uid="uid://blyhhsgjw6vbi" path="res://scenes/Items/flipper_zero_debug.tscn" id="23_nytsu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raux7"]
 shader = ExtResource("1_ih8q5")
@@ -35,7 +36,7 @@ script = ExtResource("1_udb5f")
 [node name="Backdrop" type="Sprite2D" parent="."]
 z_index = -10
 material = SubResource("ShaderMaterial_raux7")
-position = Vector2(557, 310)
+position = Vector2(642, 324)
 scale = Vector2(2, 2)
 texture = ExtResource("1_ebjrb")
 
@@ -113,8 +114,6 @@ texture = ExtResource("14_wo1vi")
 
 [node name="Couch" parent="NonInteractbableObjects" instance=ExtResource("12_l36o1")]
 
-[node name="HallTable" parent="NonInteractbableObjects" instance=ExtResource("13_g8iod")]
-
 [node name="InteractableItems" type="Node2D" parent="."]
 
 [node name="Ball" parent="InteractableItems" instance=ExtResource("4_1ohl8")]
@@ -133,6 +132,12 @@ position = Vector2(-41, 90)
 scale = Vector2(0.9, 0.9)
 destination_room = 6
 destination_spawn_point = "SpawnApartmentDoor"
+
+[node name="HallTable" parent="InteractableItems" instance=ExtResource("13_g8iod")]
+
+[node name="FlipperZeroDebug" parent="InteractableItems/HallTable" instance=ExtResource("23_nytsu")]
+position = Vector2(345, -470)
+scale = Vector2(0.25, 0.25)
 
 [node name="Player" parent="." instance=ExtResource("1_84olp")]
 position = Vector2(241, 201)
@@ -182,3 +187,5 @@ ballNode = NodePath("../InteractableItems/Ball")
 
 [editable path="InteractableItems/Ball"]
 [editable path="InteractableItems/Ball/Item"]
+[editable path="InteractableItems/HallTable"]
+[editable path="InteractableItems/HallTable/Item"]

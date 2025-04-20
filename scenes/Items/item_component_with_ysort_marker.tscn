@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfwkdl35ymv3a"]
 
-[ext_resource type="Script" path="res://components/items/item_meta_data.gd" id="1_k568f"]
+[ext_resource type="Script" uid="uid://kc4xotnceu28" path="res://components/items/item_meta_data.gd" id="1_k568f"]
 
 [node name="Item" type="Node2D"]
 script = ExtResource("1_k568f")
-item_aspects = 1
 
 [node name="YSortMarker2D" type="Marker2D" parent="."]
 position = Vector2(-1.90735e-06, 37)
